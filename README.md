@@ -20,7 +20,7 @@ watch -n5 ./build.sh
 
 * start container
 ```console
-$ docker run --rm -p 8000:1948 -v $(pwd)/resources:/usr/src/app containersol/reveal-md:latest
+$ docker run --rm -p 8000:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:latest /slides --theme theme/cc.css
 ```
 
 * check browser `http://localhost:8000`
