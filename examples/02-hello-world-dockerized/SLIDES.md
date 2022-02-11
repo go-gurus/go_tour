@@ -8,6 +8,19 @@ The program should print the text `Hello World! This is Go.` to the standard out
 
 ##### Solution
 
+```golang
+// main.go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World! This is Go.")
+}
+```
+
+----
+
 ```Dockerfile
 # Dockerfile
 # build stage
@@ -26,37 +39,26 @@ COPY --from=build /bin/app /bin/app
 ENTRYPOINT ["/bin/app"]
 ```
 
-```golang
-// main.go
-package main
-
-import "fmt"
-
-func main() {
-	fmt.Println("Hello World! This is Go.")
-}
-```
-
 ----
 ##### Building and executing Go code
 * build docker image
-```bash
-$ docker build -t golang-for-devs-hello-image .
-```
 
+```bash
+$ docker build -t hello-image .
+```
 * inspect image size
-```bash
-$ docker images golang-for-devs-hello-image
-REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
-golang-for-devs-hello-image   latest    d23a3532deaf   4 minutes ago   1.77MB
-```
 
-* run container
 ```bash
-$ docker run --rm -it --name golang-for-devs-hello-container golang-for-devs-hello-image
+$ docker images hello-image                                
+REPOSITORY   TAG      IMAGE ID       CREATED         SIZE
+hello-image  latest   d23a3532deaf   4 minutes ago   1.77MB
+```
+* run container
+
+```bash
+$ docker run --rm -it --name hello-con hello-image
 Hello World! This is Go.
 ```
-
 ----
 #### What we have learned
 * How to write a Go Dockerfile
