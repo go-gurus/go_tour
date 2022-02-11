@@ -1,7 +1,6 @@
 ### Hello World
 This task is supposed to demonstrate basic console I/O in Go.
 
-
 The program should print the text `Hello World! This is Go.` to the standard output.
 
 ----
