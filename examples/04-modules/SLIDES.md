@@ -26,10 +26,12 @@ func main() {
 ### Using modules
 
 * init modules
+
 ```bash
 $ go mod init codecentric.de/hello-logrus/v2
 ```
 * a new file `go.mod` will be generated
+
 ```golang
 module codecentric.de/hello-logrus/v2
 go 1.17
