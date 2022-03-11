@@ -1,8 +1,8 @@
-### Modules
+## Modules
 In this task, you will have a look on modules, logging in go.
 
 ----
-##### logrus
+### logrus
 
 Lets write a new file and import logrus.
 
@@ -23,7 +23,7 @@ func main() {
 
 ----
 
-#### Using modules
+### Using modules
 
 * init modules
 ```bash
@@ -48,7 +48,7 @@ INFO[0000] Hello from logrus     logger=logrus
 ```
 
 ----
-##### zap
+### zap
 
 * quite a higher performance compared to logrus or other logging modules
 
@@ -148,7 +148,7 @@ $ docker run --rm -it --name hello-zap-con hello-zap-image
 ```
 ----
 
-##### golog
+### golog
 
 * higher performance than logrus
 * lower performance than zap
@@ -192,13 +192,13 @@ $ go run main.go
 exit status 1
 ```
 ----
-#### What we have learned
+### What we have learned
 * How to setup modules in go
 * How to write Dockerfiles for go modules
 * How to use logrus, zap and golog
 
 ----
-#### Further readings
+### Further readings
 * [Go Modules](https://go.dev/blog/using-go-modules)
 * [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus)
 * [github.com/uber-go/zap](https://github.com/uber-go/zap)

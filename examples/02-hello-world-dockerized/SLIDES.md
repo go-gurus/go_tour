@@ -1,4 +1,4 @@
-### Hello World Dockerized
+## Hello World Dockerized
 This task is supposed to demonstrate Docker image build for Go applications.
 
 
@@ -6,7 +6,7 @@ The program should print the text `Hello World! This is Go.` to the standard out
 
 ----
 
-##### Solution
+### Solution
 
 ```golang
 // main.go
@@ -40,7 +40,7 @@ ENTRYPOINT ["/bin/app"]
 ```
 
 ----
-##### Building and executing Go code
+### Building and executing Go code
 * build docker image
 
 ```bash
@@ -60,7 +60,7 @@ $ docker run --rm -it --name hello-con hello-image
 Hello World! This is Go.
 ```
 ----
-#### What we have learned
+### What we have learned
 * How to write a Go Dockerfile
 * Use build stages for Go applications
 * Go Docker image sizes

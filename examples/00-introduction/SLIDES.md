@@ -1,10 +1,10 @@
-# Golang for Developers
+<!-- .slide: data-background="img/codecentric.png" data-background-size="10%" data-background-position="50% 10%" -->
 
-- Point 1
-- Point 2
+# Golang for Developers
 
 ---
 
-## Microprojects
+## Introduction
+* TODO
 
 ---

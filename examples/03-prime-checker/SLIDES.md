@@ -1,9 +1,9 @@
-### Prime checker
+## Prime checker
 In this task, you will learn about writing tests in Go by developing a prime tester in TDD-style.
 
 ----
 
-##### Solution
+### Solution
 
 Lets write a test to specify what we expect from the prime checker yet to be developed.
 
@@ -27,7 +27,7 @@ func TestPrimeCheckerTheNaiveWay(t *testing.T) {
 ```
 
 ----
-#### Executing tests
+### Executing tests
 
 ```bash
 go test main.go main_test.go
@@ -45,7 +45,7 @@ The test will fail, because the function `IsPrime` is yet to be implemented.
 
 ----
 
-##### Implement the (naive) IsPrime function
+### Implement the (naive) IsPrime function
 
 ```golang
 func IsPrime(value int) (result bool) {
@@ -65,7 +65,7 @@ go test main.go main_test.go
 ok      command-line-arguments  0.102s
 ```
 ----
-#### Table-driven tests
+### Table-driven tests
 
 Cut down redundancy in your tests:
 ```golang
@@ -96,7 +96,7 @@ func TestPrimeCheckerTableDriven(t *testing.T) {
 ```
 
 ----
-#### What we have learned
+### What we have learned
 * How to use the Go testing package
 * How to run tests
 * Write our first Go function with in and out parameters
