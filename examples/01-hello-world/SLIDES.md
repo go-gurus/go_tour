@@ -1,11 +1,11 @@
-### Hello World
+## Hello World
 This task is supposed to demonstrate basic console I/O in Go.
 
 The program should print the text `Hello World! This is Go.` to the standard output.
 
 ----
 
-##### Solution
+### Solution
 
 ```golang
 package main
@@ -18,7 +18,7 @@ func main() {
 ```
 
 ----
-##### Building and executing Go code
+### Building and executing Go code
 Run a go file directly
 ```
 go run main.go
@@ -35,7 +35,7 @@ Hello World! This is Go.
 ```
 ----
 
-##### Compile for other platforms:
+### Compile for other platforms:
 
 ```
 GOOS=linux GOARCH=arm go build main.go
@@ -52,7 +52,7 @@ $file main
 main: Mach-O 64-bit executable x86_64
 ```
 ----
-#### What we have learned
+### What we have learned
 * Go belongs to the C/Java syntactic family
 * There are packages and imports, such as in Java
 
