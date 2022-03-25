@@ -12,7 +12,6 @@ import (
 
 var logFacade logInterface = resolveLogger()
 
-// TODO: gomock, interface mocken // in extra Datei
 type logInterface interface {
 	Info(string)
 	Error(string)
