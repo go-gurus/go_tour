@@ -161,11 +161,9 @@ Now lets write a new file and import golog.
 ----
 
 ```golang
+//main.go
 package main
-
-import (
-	"github.com/kataras/golog"
-)
+import ( "github.com/kataras/golog" )
 
 func main() {
 	golog.SetLevel("debug")
@@ -194,16 +192,69 @@ $ go run main.go
 exit status 1
 ```
 ----
+### Vendoring
+* What if a go module repo will be renamed, deleted or moved?
+* Go programs will always compile if all module dependencies will stay accessible in the future.
+* This is not always the case.
+* The solution: vendoring
+----
+```golang
+//main.go
+package main
+import (
+	"go.uber.org/zap"
+	"time"
+)
+func main() {
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+	logger.Info("Hello from zap.",
+		zap.String("logger", "zap"),
+		zap.Duration("backoff", time.Second),
+	)
+}
+```
+----
+* generate vendor folder
+
+```bash
+$ go mod init codecentric.de/hello-zap-vendor
+$ go get go.uber.org/zap
+$ go mod vendor
+```
+----
+* all dependencies are added
+
+```bash
+.
+├── go.mod
+├── go.sum
+├── main.go
+└── vendor
+    ├── go.uber.org
+    │   ├── atomic
+    │   ├── multierr
+    │   └── zap
+    └── modules.txt
+
+```
+----
 ### What we have learned
 * How to setup modules in go
 * How to write Dockerfiles for go modules
 * How to use logrus, zap and golog
-
+* How to vendor all dependencies
 ----
 ### Further readings
-* [Go Modules](https://go.dev/blog/using-go-modules)
-* [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus)
-* [github.com/uber-go/zap](https://github.com/uber-go/zap)
-* [github.com/kataras/golog](https://github.com/kataras/golog)
+* Go Modules
+  * [go.dev/blog/using-go-modules](https://go.dev/blog/using-go-modules)
+* Logrus
+  * [github.com/sirupsen/logrus](https://github.com/sirupsen/logrus)
+* zap
+  * [github.com/uber-go/zap](https://github.com/uber-go/zap)
+* golog
+  * [github.com/kataras/golog](https://github.com/kataras/golog)
+* Vendoring in go
+  * [go.dev/ref/mod#vendoring](https://go.dev/ref/mod#vendoring)
 
 ---
