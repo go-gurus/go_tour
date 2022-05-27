@@ -1,4 +1,4 @@
-// main.go
+// simpleErrorHandling.go
 package main
 
 import (
