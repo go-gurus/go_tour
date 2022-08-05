@@ -18,7 +18,7 @@ golang introduction workshop
 * Periodic build for development purposes:
 
 ```bash
-watch -n5 ./build.sh
+
 ```
 
 * start container

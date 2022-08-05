@@ -1,0 +1,9 @@
+type Beer {
+  id: ID!
+  manufacturer: String!
+  name: String!
+  origin: String!
+  type: String!
+  percentage : Float!
+  ibu: Int
+}
