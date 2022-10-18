@@ -1,0 +1,13 @@
+# Playground
+
+## Temperature Controller
+### Get current temperature
+GET http://localhost:8080/api/temperature
+
+
+## Beers
+### Get all beers
+GET http://localhost:8080/api/beers
+
+### Get all beers from Belgium
+GET http://localhost:8080/api/beers?origin=BE
