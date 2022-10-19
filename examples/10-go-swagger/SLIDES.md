@@ -600,7 +600,9 @@ Content-Length: 68
 ```
 
 ----
+
 * specific Dockerfile for this service
+
 ```dockerfile
 # build stage
 FROM golang:1.17.6-alpine AS build
@@ -625,6 +627,7 @@ EXPOSE 443
 EXPOSE 80
 ENTRYPOINT ["/beer-fridge-server", "--port", "8080"]
 ```
+
 ----
 
 ### Further readings

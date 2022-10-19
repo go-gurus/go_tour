@@ -1,3 +1,6 @@
+<!-- .slide: data-background="img/GolangForDevelopers-04.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
 ## Modules
 In this task, you will have a look on modules, logging in go.
 

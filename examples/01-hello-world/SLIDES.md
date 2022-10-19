@@ -1,3 +1,5 @@
+<!-- .slide: data-background="img/GolangForDevelopers-01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
 ## Hello World
 This task is supposed to demonstrate basic console I/O in Go.
 

@@ -1,8 +1,9 @@
-<!-- .slide: data-background="img/codecentric.png" data-background-size="10%" data-background-position="50% 10%" -->
+<!-- .slide: data-background="img/GolangForDevelopers-00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
 
 # Golang for Developers
 
----
+----
 
 ## Introduction
 * TODO
@@ -17,5 +18,10 @@
 
 ----
 ## Why Go?
-* TODO
+* small binaries
+* fast build times
+* multi platform builds
+* binaries could be used in scratch image
+* small set of keywords (25)
+* parallelism
 ---

@@ -1,8 +1,12 @@
+<!-- .slide: data-background="img/GolangForDevelopers-05.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
 ## Interface
 In this task, we want to use interfaces to build a go service that is able to use logrus, zap and golog as logger.
 The service is configured via environment variable `LOGGER=[logrus|zap|golog]`
 
 ----
+
 ### Create an interface
 
 ```golang
@@ -19,6 +23,7 @@ type logInterface interface {
 ----
 
 * now lets create some folders and files (a.k.a. packages)
+
 ```bash
 golog_facade/
     golog_facade.go
@@ -212,7 +217,8 @@ func (m *MocklogInterface) Error(arg0 string) {
 ```
 ----
 
-* now we need also to mock the function `func resolveLogger() logInterface`, change 
+* now we need also to mock the function `func resolveLogger() logInterface`, change
+
 ```go
 // main.go
 // ...
@@ -225,8 +231,11 @@ func resolveLogger() logInterface {
 var resolveLogger = func() logInterface {
 // ...
 ```
+
 ----
+
 * now lets write the test
+
 ```go
 // main_test.go
 package main
@@ -251,7 +260,9 @@ func Test_doSomething(t *testing.T) {
 	doSomething()
 }
 ```
+
 ----
+
 * execute the test
 
 ```bash
@@ -259,6 +270,7 @@ $ LOGGER=logrus go test
 PASS
 ok      codecentric.de/interfaces/v2    1.444s
 ```
+
 ----
 
 ### What we have learned

@@ -1,3 +1,6 @@
+<!-- .slide: data-background="img/GolangForDevelopers-06.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
 ## Error Handling
 
 Let's talk about errors and error handling in Go.
