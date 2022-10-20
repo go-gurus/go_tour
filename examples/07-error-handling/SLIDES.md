@@ -1,4 +1,4 @@
-<!-- .slide: data-background="img/GolangForDevelopers-06.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/GolangForDevelopers-07.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ## Error Handling
