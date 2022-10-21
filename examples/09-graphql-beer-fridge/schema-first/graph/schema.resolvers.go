@@ -5,12 +5,13 @@ package graph
 
 import (
 	"context"
+	"errors"
 	"fmt"
-	"github.com/samber/lo"
 	"math/rand"
 
 	"codecentric.de/demo/graphql-schema-first-fridge/graph/generated"
 	"codecentric.de/demo/graphql-schema-first-fridge/graph/model"
+	"github.com/samber/lo"
 )
 
 // CreateTodo is the resolver for the createTodo field.
@@ -35,11 +36,15 @@ func (r *queryResolver) Todos(ctx context.Context, done *bool) ([]*model.Todo, e
 }
 
 // Beers is the resolver for the beers field.
-func (r *queryResolver) Beers(ctx context.Context, minPercercentage *float64) ([]*model.Beer, error) {
+func (r *queryResolver) Beers(_ context.Context, minPercentage *float64) ([]*model.Beer, error) {
+	if *minPercentage < 0.0 {
+		return nil, errors.New("percentage must be bigger or equal to 0")
+	}
+
 	beersFiltered := lo.Filter[*model.Beer](r.BeerResolver(), func(it *model.Beer, _ int) bool {
-		return it.Percentage >= *minPercercentage
+		return it.Percentage >= *minPercentage
 	})
-	// return r.BeerResolver(), nil
+
 	return beersFiltered, nil
 }
 

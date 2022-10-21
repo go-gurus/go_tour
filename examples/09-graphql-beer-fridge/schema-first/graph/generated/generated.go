@@ -59,7 +59,7 @@ type ComplexityRoot struct {
 	}
 
 	Query struct {
-		Beers func(childComplexity int, minPercercentage *float64) int
+		Beers func(childComplexity int, minPercentage *float64) int
 		Todos func(childComplexity int, done *bool) int
 	}
 
@@ -81,7 +81,7 @@ type MutationResolver interface {
 }
 type QueryResolver interface {
 	Todos(ctx context.Context, done *bool) ([]*model.Todo, error)
-	Beers(ctx context.Context, minPercercentage *float64) ([]*model.Beer, error)
+	Beers(ctx context.Context, minPercentage *float64) ([]*model.Beer, error)
 }
 
 type executableSchema struct {
@@ -170,7 +170,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.Beers(childComplexity, args["minPercercentage"].(*float64)), true
+		return e.complexity.Query.Beers(childComplexity, args["minPercentage"].(*float64)), true
 
 	case "Query.todos":
 		if e.complexity.Query.Todos == nil {
@@ -295,10 +295,16 @@ func (ec *executionContext) introspectType(name string) (*introspection.Type, er
 }
 
 var sources = []*ast.Source{
-	{Name: "../beer.graphqls", Input: `type Beer {
+	{Name: "../beer.graphqls", Input: `"""
+Beer defines key criteria of a beer
+"""
+type Beer {
   id: ID!
   manufacturer: String!
   name: String!
+  """
+  Origin of the beer as ISO country code
+  """
   origin: String!
   type: String!
   percentage : Float!
@@ -323,7 +329,7 @@ type User {
 
 type Query {
   todos(done: Boolean = true): [Todo!]!
-  beers(minPercercentage: Float = 0.0) : [Beer!]!
+  beers(minPercentage: Float = 0.0) : [Beer!]!
 }
 
 input NewTodo {
@@ -376,14 +382,14 @@ func (ec *executionContext) field_Query_beers_args(ctx context.Context, rawArgs 
 	var err error
 	args := map[string]interface{}{}
 	var arg0 *float64
-	if tmp, ok := rawArgs["minPercercentage"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("minPercercentage"))
+	if tmp, ok := rawArgs["minPercentage"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("minPercentage"))
 		arg0, err = ec.unmarshalOFloat2ᚖfloat64(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
 	}
-	args["minPercercentage"] = arg0
+	args["minPercentage"] = arg0
 	return args, nil
 }
 
@@ -889,7 +895,7 @@ func (ec *executionContext) _Query_beers(ctx context.Context, field graphql.Coll
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().Beers(rctx, fc.Args["minPercercentage"].(*float64))
+		return ec.resolvers.Query().Beers(rctx, fc.Args["minPercentage"].(*float64))
 	})
 	if err != nil {
 		ec.Error(ctx, err)

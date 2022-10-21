@@ -16,7 +16,7 @@ type User {
 
 type Query {
   todos(done: Boolean = true): [Todo!]!
-  beers(minPercercentage: Float = 0.0) : [Beer!]!
+  beers(minPercentage: Float = 0.0) : [Beer!]!
 }
 
 input NewTodo {

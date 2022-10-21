@@ -2,14 +2,16 @@
 
 package model
 
+// Beer defines key criteria of a beer
 type Beer struct {
-	ID           string  `json:"id"`
-	Manufacturer string  `json:"manufacturer"`
-	Name         string  `json:"name"`
-	Origin       string  `json:"origin"`
-	Type         string  `json:"type"`
-	Percentage   float64 `json:"percentage"`
-	Ibu          *int    `json:"ibu"`
+	ID           string `json:"id"`
+	Manufacturer string `json:"manufacturer"`
+	Name         string `json:"name"`
+	// Origin of the beer as ISO country code
+	Origin     string  `json:"origin"`
+	Type       string  `json:"type"`
+	Percentage float64 `json:"percentage"`
+	Ibu        *int    `json:"ibu"`
 }
 
 type NewTodo struct {

@@ -2,22 +2,11 @@ package service
 
 import "codecentric.de/demo/graphql-schema-first-fridge/graph/model"
 
-/*
-type Beer struct {
-	id           string
-	manufacturer string
-	name         string
-	origin       string
-	beerType     string
-	percentage   float32
-	ibu          float32
-}*/
-
 var beerList = []*model.Beer{
 	{
 		ID:           "OMTR",
 		Manufacturer: "Oostmalle",
-		Name:         "Oostalle Trappist",
+		Name:         "Oostmalle Trappist",
 		Origin:       "BE",
 		Type:         "TRAPPIST",
 		Percentage:   14.1,

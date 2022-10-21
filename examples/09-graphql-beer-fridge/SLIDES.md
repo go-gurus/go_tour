@@ -1,6 +1,7 @@
 ## GraphQL
 
-Lets be a hipster for now.
+Gin and Chi serve pure HTTP/REST style APIs. With Go, it is also possible to provide a GraphQL interface. Lets dive into
+it.
 
 ----
 
@@ -8,25 +9,34 @@ Lets be a hipster for now.
 
 Approaches
 
-- Code first
-- Schema first
+* Code first
+* Schema first
 
 ----
 
-### GraphQLGen
+### Code first
 
-- Schema-First
-    - Generates Go types and resolvers
-    - Integrates into present solutions
+- Generate GraphQL scheme from Go types
+- Define relations by type relations and annotations
 
 ----
 
-### Beer Fridge Example
+### Schema first
 
-Objectives:
+- Generate Go classes and Queries from GraphQL scheme
 
-- same functionality as gin/chi variant
-- implement a percentage filter
+----
+
+### Schema-first with GraphQLGen
+
+----
+
+### Micro Project: Beer Fridge
+
+As a thirsty employee, I want:
+
+- the same functionality as gin/chi variant so I don't need two APIs
+- a built in filter for beer IBU and origin to discover new beers
 
 ----
 
@@ -56,7 +66,37 @@ type Beer {
 
 ----
 
+#### Write a simple beer schema
+
+##### GraphQL type documentation
+
+Of course the GraphQL type documentation is passed through to the generated Go code
+
+```graphql
+"""
+Beer defines key criteria of a beer
+"""
+type Beer {
+    id: ID!
+    manufacturer: String!
+    name: String!
+    """
+    Origin of the beer as ISO country code
+    """
+    origin: String!
+    type: String!
+    percentage : Float!
+    ibu: Int
+}
+```
+
+<small>graph/beer.graphqls</small>
+
+----
+
 #### Provide a query specification
+
+To expose data to clients, we need a Query specification.
 
 ```graphql
 type Query {
@@ -80,7 +120,7 @@ go run github.com/99designs/gqlgen generate
 
 ```golang
 type Resolver struct {
-BeerResolver func () []*model.Beer
+    BeerResolver func () []*model.Beer
 }
 ```
 
@@ -88,7 +128,7 @@ BeerResolver func () []*model.Beer
 
 ```golang
 func GetBeers() []*model.Beer {
-return funnyFakeBeerList
+    return funnyFakeBeerList
 }
 ```
 
@@ -130,7 +170,7 @@ query{
     "beers": [
       {
         "id": "OMTR",
-        "name": "Oostalle Trappist",
+        "name": "Oostmalle Trappist",
         "manufacturer": "Oostmalle",
         "ibu": 48,
         "percentage": 14.1
@@ -173,7 +213,7 @@ query{
 
 ```graphql
 type Query {
-    beers(minPercercentage: Float = 0.0) : [Beer!]!
+    beers(minPercentage: Float = 0.0) : [Beer!]!
 }
 ```
 
@@ -192,15 +232,21 @@ go run github.com/99designs/gqlgen generate
 3. Implement resolver
 
 ```golang
-func (r *queryResolver) Beers(ctx context.Context, 
-	minPercercentage *float64) ([]*model.Beer, error) {
-	// In practice, this would happen in the filter. Who wants to implement it?
+func (r *queryResolver) Beers(_ context.Context, 
+	minPercentage *float64) ([]*model.Beer, error) {
+    if *minPercentage < 0.0 {
+        return nil, errors.New("percentage must be bigger or equal to 0")
+    }
+    
     beersFiltered := lo.Filter[*model.Beer](r.BeerResolver(), 
 		func(it *model.Beer, _ int) bool {
-            return it.Percentage >= *minPercercentage
+        return it.Percentage >= *minPercentage
     })
+    
+    return beersFiltered, nil
 }
 ```
+
 <small>graph/schema.resolvers.go</small>
 
 ----
@@ -208,14 +254,15 @@ func (r *queryResolver) Beers(ctx context.Context,
 #### Query with filters
 
 Return all beers with >10% and where they are from.
+
 ```graphql
 query{
-  beers(minPercercentage : 10) {
-    name
-    origin
-    manufacturer
-    percentage
-  }
+    beers(minPercentage : 10) {
+        name
+        origin
+        manufacturer
+        percentage
+    }
 }
 ```
 
@@ -228,7 +275,8 @@ query{
         "origin": "BE",
         "manufacturer": "Grim Fandango",
         "percentage": 14.9
-      }, // more
+      }
+      // more
     ]
   }
 }
@@ -236,3 +284,8 @@ query{
 
 ----
 
+### Further readings
+
+* [https://gqlgen.com/getting-started/(https://gqlgen.com/getting-started/)
+
+----
