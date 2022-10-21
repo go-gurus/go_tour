@@ -142,7 +142,7 @@ func GetBeers() []*model.Beer {
 ```go
 // Beers is the resolver for the beers field.
 func (r *queryResolver) Beers(ctx context.Context) ([]*model.Beer, error) {
-return r.BeerResolver(), nil
+    return r.BeerResolver(), nil
 }
 ```
 
@@ -193,14 +193,15 @@ query{
 
 ```json
 "data": {
-"beers": [
-{
-"origin": "BE",
-"manufacturer": "Oostmalle",
-"percentage": 14.1
-}, ///more
+    "beers": [
+        {
+        "origin": "BE",
+        "manufacturer": "Oostmalle",
+        "percentage": 14.1
+        }, ///more
 ```
-
+----
+<big>Job done.</big>
 ----
 <big>Wait..</big>
 ----
@@ -287,5 +288,5 @@ query{
 ### Further readings
 
 * [https://gqlgen.com/getting-started/(https://gqlgen.com/getting-started/)
-
-----
+* [https://graphql.org/](https://graphql.org/)
+---
