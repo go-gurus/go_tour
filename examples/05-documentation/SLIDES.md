@@ -1,9 +1,12 @@
-<!-- .slide: data-background="img/GolangForDevelopers-05.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/DOCUMENTATION/00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ## Documentation
 In this task, we want to build and serve some golang documentation.
 
+----
+
+<!-- .slide: data-background="img/DOCUMENTATION/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ### Create a module
@@ -62,6 +65,7 @@ $ go install -v golang.org/x/tools/cmd/godoc@latest
 ```
 
 * serve the documentation
+
 ```shell
 $ ~/go/bin/godoc -http :6060
 ```

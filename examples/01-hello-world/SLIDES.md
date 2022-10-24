@@ -1,5 +1,6 @@
-<!-- .slide: data-background="img/GolangForDevelopers-01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/HELLO_WORLD/00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
+
 ## Hello World
 This task is supposed to demonstrate basic console I/O in Go.
 
@@ -7,6 +8,8 @@ The program should print the text `Hello World! This is Go.` to the standard out
 
 ----
 
+<!-- .slide: data-background="img/HELLO_WORLD/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
 ### Solution
 
 ```golang

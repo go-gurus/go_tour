@@ -1,10 +1,14 @@
-<!-- .slide: data-background="img/GolangForDevelopers-04.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/MODULES/00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ## Modules
-In this task, you will have a look on modules, logging in go.
+In this task we want to create different modules in GO. Every single module uses a different logging mechanism. We use `logrus`, `zap` and `golog` in our example.
 
 ----
+
+<!-- .slide: data-background="img/MODULES/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
 ### logrus
 
 Lets write a new file and import logrus.
@@ -33,6 +37,7 @@ func main() {
 ```bash
 $ go mod init codecentric.de/hello-logrus/v2
 ```
+
 * a new file `go.mod` will be generated
 
 ```golang
@@ -43,10 +48,13 @@ go 1.17
 ----
 
 * install go module, a new file `go.sum` is created
+
 ```bash
 $ go get github.com/sirupsen/logrus
 ```
+
 * execute file `main.go`
+
 ```bash
 $ go run main.go
 INFO[0000] Hello from logrus     logger=logrus
@@ -197,10 +205,17 @@ exit status 1
 ----
 ### Vendoring
 * What if a go module repo will be renamed, deleted or moved?
-* Go programs will always compile if all module dependencies will stay accessible in the future.
+* Go programs will only compile if all module dependencies will stay accessible in the future.
 * This is not always the case.
 * The solution: vendoring
+
+In this task, we want to explicitly add all dependencies to one of our modules to bypass external dependencies in the build process. We use the vendoring feature of go for this.
+
 ----
+
+<!-- .slide: data-background="img/MODULES/02.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
 ```golang
 //main.go
 package main

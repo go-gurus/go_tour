@@ -1,10 +1,16 @@
-<!-- .slide: data-background="img/GolangForDevelopers-06.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/INTERFACES/00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ## Interface
 In this task, we want to use interfaces to build a go service that is able to use logrus, zap and golog as logger.
 The service is configured via environment variable `LOGGER=[logrus|zap|golog]`
 
+----
+
+<!-- .slide: data-background="img/INTERFACES/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
+<!-- .slide: data-background="img/INTERFACES/02.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ### Create an interface
@@ -176,6 +182,13 @@ $ LOGGER=zap go run main.go
 ----
 
 ### Interface Mocking
+
+In this task we want to inject a mock to be able to test function calls on the interface.
+
+----
+
+<!-- .slide: data-background="img/INTERFACES/03.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
 
 * install gomock
 

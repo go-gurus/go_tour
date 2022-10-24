@@ -1,9 +1,12 @@
-<!-- .slide: data-background="img/GolangForDevelopers-03.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/PRIME_CHECKER/00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ## Prime checker
 In this task, you will learn about writing tests in Go by developing a prime tester in TDD-style.
 
+----
+
+<!-- .slide: data-background="img/PRIME_CHECKER/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ### Solution
