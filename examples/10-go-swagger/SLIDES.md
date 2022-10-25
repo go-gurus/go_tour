@@ -5,8 +5,12 @@ This service using the interface first approach with `go-swagger` code generatio
 
 ----
 
+<!-- .slide: data-background="img/GO_SWAGGER/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
 ### get go-swagger
 * install `go-swagger` via docker on mac and linux
+
 ```shell
 docker pull quay.io/goswagger/swagger
 alias swagger='docker run --rm -it  --user $(id -u):$(id -g) -e \
@@ -15,11 +19,13 @@ swagger version
 ```
 
 * install `go-swagger` via docker on windows
+
 ```shell
 docker run --rm -it --env GOPATH=/go -v %CD%:/go/src -w /go/src quay.io/goswagger/swagger
 ```
 
 * check swagger version
+
 ```shell
 $ swagger version
 version: v0.29.0
@@ -76,6 +82,7 @@ The swagger spec at "swagger.yml" showed up some valid but possibly unwanted con
 
 * lets adapt the interface to our needs
 * add definitions for `beer` and `teperature` of our fridge
+
 ```yaml
 # swagger.yml
 # ...
@@ -110,6 +117,7 @@ definitions:
 ----
 
 * add endpoints for `/beers` and `/temperature`
+
 ```yaml
 paths:
   /beers:
@@ -140,7 +148,9 @@ paths:
             $ref: "#/definitions/temperature"
 ```
 ----
+
 * init module, generate service and get modules
+
 ```shell
 ➜ go mod init codecentric.de/beer-fridge-go-swagger
 ➜ swagger generate server -A beer-fridge -f ./swagger.yml
@@ -186,11 +196,14 @@ paths:
 ----
 
 * start service
+
 ```shell
 ➜ go run cmd/beer-fridge-server/main.go
 2022/08/28 16:34:16 Serving beer fridge at http://127.0.0.1:54746
 ```
+
 * visit service under [127.0.0.1:54746/beers](http://127.0.0.1:65480/beers) (take the custom port into account)
+
 ```html
 "operation beers.GetBeers has not yet been implemented"
 ```

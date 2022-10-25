@@ -1,9 +1,15 @@
+<!-- .slide: data-background="img/HELLO_WORLD_DOCKERIZED/00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
 ## Hello World Dockerized
 This task is supposed to demonstrate Docker image build for Go applications.
 
 
 The program should print the text `Hello World! This is Go.` to the standard output in a docker container.
 
+----
+
+<!-- .slide: data-background="img/HELLO_WORLD_DOCKERIZED/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
 
 ### Solution
