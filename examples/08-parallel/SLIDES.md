@@ -43,7 +43,7 @@ What is this program doing?
 * executes function to put 42 to the channel in background
 * get a value from channel
 * print the value
-* 
+
 ----
 
 <!-- .slide: data-background="img/PARALLEL/02.jpg" data-background-size="60%" data-background-position="50% 50%" -->
@@ -156,16 +156,16 @@ worker: 8, input: 766, result: 766000
 
 ----
 
-* first lets add a loop
+* first lets add a loop, also change order of getting and sending data
 
 ```go
 // main.go
 func main() {
-  // ...
-  go sendDataToChannel(input)
+  // ... 
   for i := 0; i < 10; i++ {
     go processChannel(i, input, output)
   }
+  go sendDataToChannel(input)
   // ...
 }
 ```
@@ -173,12 +173,12 @@ func main() {
 ----
 
 * close the channels if not needed anymore
+
 ```go
 // main.go
 // ...
 func main() {
   // ...
-
   input := make(chan int)
   output := make(chan string)
   defer close(input)
@@ -227,6 +227,7 @@ func processChannel(id int, input chan int, output chan string) {
 ```
 
 ----
+
 * at the end your main file should look like this
 
 ```go
