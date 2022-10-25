@@ -1,4 +1,4 @@
-<!-- .slide: data-background="img/INTERFACES/00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/INTERFACES/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 ----
 
 ## Interface
