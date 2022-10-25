@@ -1,3 +1,6 @@
+<!-- .slide: data-background="img/GIN/00.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+----
+
 ## gin
 
 Gin is a web framework written in Go (Golang).
