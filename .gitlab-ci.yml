@@ -29,6 +29,7 @@ stages:
   - deploy
 
 build-service:
+  image: gitlab/gitlab-runner:alpine
   stage: build_service
   script:
     - ./build.sh
