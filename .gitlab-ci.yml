@@ -90,6 +90,4 @@ deploy:
     name: $TF_STATE_NAME
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
-      when: manual
-    - if: $CI_COMMIT_BRANCH == "develop"
-    - when: never
+      when: always
