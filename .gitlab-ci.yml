@@ -1,0 +1,42 @@
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Terraform.gitlab-ci.yml
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+      when: always
+      variables:
+        TF_STATE_NAME: "production"
+
+stages:
+  - build
+  - containerize
+
+build:
+  stage: build
+  script:
+    - ./build.sh
+  artifacts:
+    paths:
+      - resources/golang-for-developers.md
+    expire_in: 1 week
+
+"Docker Build":
+  stage: containerize
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [ "" ]
+  only:
+    refs:
+      - main
+  variables:
+    KUBERNETES_CPU_REQUEST: 1
+    KUBERNETES_CPU_LIMIT: 1
+    KUBERNETES_MEMORY_REQUEST: 2048Mi
+    KUBERNETES_MEMORY_LIMIT: 2048Mi
+  script:
+    - export TAG=$(date +%Y%m%d)_${CI_COMMIT_SHA:0:8}_${CI_COMMIT_REF_NAME}
+    - echo "{\"auths\":{\"$DOCKER_REGISTRY\":{\"username\":\"$DOCKER_REGISTRY_USER\",\"password\":\"$DOCKER_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $DOCKER_REGISTRY/$CI_PROJECT_NAME:$TAG
