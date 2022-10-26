@@ -31,7 +31,7 @@ $ docker run --rm -p 8000:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:la
 
 ```bash
 $ docker build --platform linux/amd64 --tag grohmio/golang-for-developers:latest .
-$ docker run --rm -p 8000:1948 grohmio/golang-for-developers:latest
+$ docker run --rm -p 80:80 grohmio/golang-for-developers:latest
 ```
 
 * open the slides: [http://localhost:8000](http://localhost:8000)
