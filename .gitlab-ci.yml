@@ -26,7 +26,7 @@ build:
 "Docker Build":
   stage: containerize
   image:
-    name: mgit/base:kaniko-executor-debug-stable
+    name: gcr.io/kaniko-project/executor:debug
     entrypoint: [ "" ]
   only:
     refs:
