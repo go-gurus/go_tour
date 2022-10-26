@@ -37,7 +37,7 @@ build-service:
       - resources/golang-for-developers.md
     expire_in: 1 week
 
-"Docker Build":
+docker-build:
   stage: containerize
   image:
     name: gcr.io/kaniko-project/executor:debug
@@ -60,11 +60,11 @@ build-service:
 
 fmt:
   extends: .terraform:fmt
-  needs: []
+  needs: ["docker-build"]
 
 validate:
   extends: .terraform:validate
-  needs: []
+  needs: ["docker-build"]
 
 kics-iac-sast:
   rules:

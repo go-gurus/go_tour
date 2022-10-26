@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "main-service-rg" {
-  name     = "${var.main_ervice_name}-rg"
+  name     = "${var.main_service_name}-rg"
   location = var.location
 }
 
