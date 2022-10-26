@@ -8,14 +8,28 @@ workflow:
     - if: $CI_COMMIT_REF_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
       when: always
       variables:
-        TF_STATE_NAME: "production"
+        TF_STATE_NAME: "main"
+
+variables:
+  TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${TF_STATE_NAME}
+  TF_VAR_deployment_target: $TF_STATE_NAME
+  TF_ROOT: "${CI_PROJECT_DIR}/devops"
+
+include:
+  - template: Terraform/Base.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.gitlab-ci.yml
+  - template: Jobs/SAST-IaC.gitlab-ci.yml   # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Jobs/SAST-IaC.gitlab-ci.yml
+
 
 stages:
-  - build
+  - build_service
   - containerize
+  - validate
+  - test
+  - build
+  - deploy
 
-build:
-  stage: build
+build-service:
+  stage: build_service
   script:
     - ./build.sh
   artifacts:
@@ -41,3 +55,40 @@ build:
     - export TAG=$(date +%Y%m%d)_${CI_COMMIT_SHA:0:8}_${CI_COMMIT_REF_NAME}
     - echo "{\"auths\":{\"$DOCKER_REGISTRY\":{\"username\":\"$DOCKER_REGISTRY_USER\",\"password\":\"$DOCKER_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $DOCKER_REGISTRY/$CI_PROJECT_NAME:$TAG
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $DOCKER_REGISTRY/$CI_PROJECT_NAME:latest
+
+
+fmt:
+  extends: .terraform:fmt
+  needs: []
+
+validate:
+  extends: .terraform:validate
+  needs: []
+
+kics-iac-sast:
+  rules:
+    - if: $SAST_DISABLED
+      when: never
+    - if: $SAST_EXCLUDED_ANALYZERS =~ /kics/
+      when: never
+    - if: $CI_COMMIT_BRANCH
+    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+
+build:
+  extends: .terraform:build
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - when: never
+
+deploy:
+  extends: .terraform:deploy
+  dependencies:
+    - build
+  environment:
+    name: $TF_STATE_NAME
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: manual
+    - if: $CI_COMMIT_BRANCH == "develop"
+    - when: never
