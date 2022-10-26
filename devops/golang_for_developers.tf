@@ -29,10 +29,10 @@ resource "azurerm_app_service" "main-service" {
     enabled = false
   }
   app_settings = {
-    "WEBSITES_ENABLE_APP_SERVICE_STORAGE"  = false
-    "DOCKER_REGISTRY_SERVER_URL"           = "https://${var.docker_registry}"
-    "DOCKER_REGISTRY_SERVER_USERNAME"      = var.docker_registry_server_username
-    "DOCKER_REGISTRY_SERVER_PASSWORD"      = var.docker_registry_server_password
-    "PORT"                                 = 8080
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = false
+    "DOCKER_REGISTRY_SERVER_URL"          = "https://${var.docker_registry}"
+    "DOCKER_REGISTRY_SERVER_USERNAME"     = var.docker_registry_server_username
+    "DOCKER_REGISTRY_SERVER_PASSWORD"     = var.docker_registry_server_password
+    "PORT"                                = 8080
   }
 }
