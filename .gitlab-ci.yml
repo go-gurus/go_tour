@@ -40,4 +40,4 @@ build:
   script:
     - export TAG=$(date +%Y%m%d)_${CI_COMMIT_SHA:0:8}_${CI_COMMIT_REF_NAME}
     - echo "{\"auths\":{\"$DOCKER_REGISTRY\":{\"username\":\"$DOCKER_REGISTRY_USER\",\"password\":\"$DOCKER_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $DOCKER_REGISTRY/$CI_PROJECT_NAME:$TAG
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination grohmio/$CI_PROJECT_NAME:$TAG
