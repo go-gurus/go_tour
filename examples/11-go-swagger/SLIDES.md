@@ -1,3 +1,6 @@
+<!-- .slide: data-background="img/GO_SWAGGER/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+----
+
 ## go-swagger
 
 We want to build the `beer-fridge` service again.
