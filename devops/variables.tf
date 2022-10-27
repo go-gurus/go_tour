@@ -43,8 +43,13 @@ variable "main_service_name" {
   default     = "golang-for-developers"
 }
 
-variable "main_service_docker_name" {
+variable "main_service_container_name" {
   type        = string
   description = "name for main service"
   default     = "golang_for_developers"
+}
+
+variable "main_service_container_tag" {
+  type        = string
+  description = "container tag for main service"
 }

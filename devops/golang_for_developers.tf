@@ -23,7 +23,7 @@ resource "azurerm_app_service" "main-service" {
   https_only          = "true"
   site_config {
     always_on        = "true"
-    linux_fx_version = "DOCKER|${var.docker_registry}/${var.main_service_docker_name}:latest"
+    linux_fx_version = "DOCKER|${var.docker_registry}/${var.main_service_container_name}:${var.main_service_container_tag}"
   }
   auth_settings {
     enabled = false
