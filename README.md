@@ -24,7 +24,7 @@ watch -n5 ./build.sh
 * start container
 
 ```console
-$ docker run --rm -p 8000:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:latest /slides --theme theme/cc.css
+$ docker run --rm -p 8080:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:latest /slides --theme theme/cc.css
 ```
 
 * or build and run a container
@@ -34,7 +34,7 @@ $ docker build --platform linux/amd64 --tag grohmio/golang-for-developers:latest
 $ docker run --rm -p 8080:8080 grohmio/golang-for-developers:latest
 ```
 
-* open the slides: [http://localhost:8000](http://localhost:8000)
+* open the slides: [http://localhost:8080](http://localhost:8080)
 
 ## Contributing
 
