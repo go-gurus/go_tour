@@ -53,6 +53,7 @@ brew install go
 * `go generate` generates code from source files
 * `go version` determines the go version used
 ----
+## Useful Go Tools
 * `go vet` finds potential errors in the application
 * `go bug` report error
 * `go doc` standard tool to view documentation and source code
@@ -73,7 +74,7 @@ type, var
 ```
 
 ----
-## Base Types of Keywords
+## Base Types
 * bool
 * numeric types
   * int8, int16, int32, int64, int
