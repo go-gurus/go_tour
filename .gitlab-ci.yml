@@ -5,7 +5,7 @@
 
 workflow:
   rules:
-    - if: $CI_COMMIT_REF_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+    - if: $CI_COMMIT_REF_NAME == "main"
       when: always
       variables:
         TF_STATE_NAME: "main"
@@ -33,6 +33,9 @@ build-service:
   stage: build_service
   script:
     - ./build.sh
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: always
   artifacts:
     paths:
       - resources/golang-for-developers.md
@@ -43,9 +46,9 @@ docker-build:
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [ "" ]
-  only:
-    refs:
-      - main
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: always
   variables:
     KUBERNETES_CPU_REQUEST: 1
     KUBERNETES_CPU_LIMIT: 1
@@ -61,11 +64,11 @@ docker-build:
 
 fmt:
   extends: .terraform:fmt
-  needs: ["docker-build"]
+  needs: []
 
 validate:
   extends: .terraform:validate
-  needs: ["docker-build"]
+  needs: []
 
 kics-iac-sast:
   rules:
@@ -81,6 +84,7 @@ build:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
     - when: never
+  needs: ["docker-build"]
 
 deploy:
   extends: .terraform:deploy
@@ -91,3 +95,4 @@ deploy:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
       when: always
+  needs: ["docker-build"]
