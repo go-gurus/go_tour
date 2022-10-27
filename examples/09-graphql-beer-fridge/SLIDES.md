@@ -1,6 +1,6 @@
 ## GraphQL
 
-Gin and Chi serve pure HTTP/REST style APIs. With Go, it is also possible to provide a GraphQL interface. Lets dive into
+Our beer fridge provides HTTP/REST style APIs now. With Go, it is also possible to provide a GraphQL interface. Lets dive into
 it.
 
 ----
@@ -35,7 +35,7 @@ Approaches
 
 As a thirsty employee, I want:
 
-- the same functionality as gin/chi variant so I don't need two APIs
+- the same functionality as the REST API variant so I don't need two APIs
 - a built in filter for beer IBU and origin to discover new beers
 
 ----
