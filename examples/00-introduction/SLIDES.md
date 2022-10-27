@@ -4,7 +4,7 @@
 # Golang for Developers
 
 ----
-### Autors
+## Autors
 
 |                                                                |                                                                                                                                                                                                                                                                                    |
 |----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -12,11 +12,12 @@
 | ![grohmio](img/cc_grohmio.png)<!-- .element height="200px" --> | <ul><li>[Andreas Grohmann](https://codecentric.de)<br />[grohm.io](https://grohm.io)<br />[github/grohmio](https://github.com/grohmio)<br />[twitter/grohmeo](https://twitter.com/grohmeo)<br />[stackoverflow/grohmio](https://stackoverflow.com/users/6654539/grohmio)</li></ul> |
 
 
-----
+---
 
 ## Introduction
 Why should you look at the GO programming language?
-Go takes a lot of getting used to and is reduced to the essentials.
+Go is an open source programming language. 
+But go takes a lot of getting used to and is reduced to the essentials.
 You can build anything from small helper scripts for pipelines to microservices to highly complex monoliths with GO.
 The advantages of Go are a strong standardization of the tools,
 a high applicability of the binaries and a high performance of the build process.
@@ -24,7 +25,7 @@ We will discuss further advantages of Go in more detail.
 
 ----
 
-## Why Go?
+### Why Go?
 * small binaries
 * fast build times
 * multi platform builds
@@ -35,13 +36,20 @@ We will discuss further advantages of Go in more detail.
 
 ----
 
-## Install Golang Linux, Windows, MacOS
+### Install Golang Linux, Windows, MacOS
 * download your package from [go.dev/dl/](https://go.dev/dl/)
 * follow instructions from [go.dev/doc/install](https://go.dev/doc/install)
 * recommendet for MacOS [formulae.brew.sh/formula/go](https://formulae.brew.sh/formula/go)
 ```shell
 brew install go
 ```
+
+----
+
+### Go Playground
+![go-playground](img/INTRODUCTION/playground.png)<!-- .element height="500px" -->
+[go.dev/play](https://go.dev/play/)
+
 
 ----
 ## Useful Go Tools
