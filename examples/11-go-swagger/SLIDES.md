@@ -658,6 +658,7 @@ ENTRYPOINT ["/beer-fridge-server", "--port", "8080"]
 
 ### Further readings
 * go-swagger
+    * [goswagger.io/](https://goswagger.io/)
     * [github.com/go-swagger/go-swagger](https://github.com/go-swagger/go-swagger)
 * install go-swagger
     * [goswagger.io/install.html](https://goswagger.io/install.html)
