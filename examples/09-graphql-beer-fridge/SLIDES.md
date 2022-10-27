@@ -149,7 +149,17 @@ func (r *queryResolver) Beers(ctx context.Context) ([]*model.Beer, error) {
 <small>graph/schema.resolvers.go</small>
 
 ----
+#### How to issue a GraphQL Query
 
+#### Web Interface
+GraphiQL Web Interface: http://localhost:8080
+
+#### Direct HTTP request 
+```bash
+curl 'http://localhost:8080/query' \  
+  --data-raw '{"query":"..."'} \
+```
+----
 #### Our first GraphQL Query
 
 ```graphql
