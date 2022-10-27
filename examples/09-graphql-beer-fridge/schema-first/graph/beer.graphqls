@@ -1,0 +1,15 @@
+"""
+Beer defines key criteria of a beer
+"""
+type Beer {
+  id: ID!
+  manufacturer: String!
+  name: String!
+  """
+  Origin of the beer as ISO country code
+  """
+  origin: String!
+  type: String!
+  percentage : Float!
+  ibu: Int
+}

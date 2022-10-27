@@ -1,0 +1,4 @@
+type Query {
+  beers(minPercentage: Float = 0.0) : [Beer!]!
+}
+
