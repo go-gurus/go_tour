@@ -14,6 +14,17 @@ $ docker run --rm -p 8000:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:la
   $ watch -n5 ./build.sh  
 ```
 
+## Terraform
+
+* init project
+```shell
+cd devops
+terraform init \
+-backend-config="address=https://gitlab.codecentric.de/api/v4/projects/5409/terraform/state/main" \
+-backend-config=username="..." \
+-backend-config=password="..."
+```
+
 ## Further readings
 
 * [reveal md](https://github.com/webpro/reveal-md)
