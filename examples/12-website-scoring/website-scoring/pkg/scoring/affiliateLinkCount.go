@@ -18,11 +18,11 @@ type LinkCountResult struct {
 	ShortendedUrls       int `json:"ShortendedUrls"`
 }
 
-func (l *LinkCountResult) score() float64 {
+func (l LinkCountResult) Score() float64 {
 	return float64(l.TotalLinks + l.LocalLinks - l.AffiliateLinks*2 - l.MaskedAffiliateLinks*4 - l.ShortendedUrls)
 }
 
-func AffiliateLinkCount(doc *goquery.Document) float64 {
+func AffiliateLinkCount(doc *goquery.Document) LinkCountResult {
 	result := LinkCountResult{}
 	localdomain := doc.Url.Host
 
@@ -49,13 +49,13 @@ func AffiliateLinkCount(doc *goquery.Document) float64 {
 		}
 
 	})
-	return result.score()
+	return result
 }
 
-func init() {
-	RegisterScoringFeature(FeatureRegistration{
-		Feature: AffiliateLinkCount,
+func affiliateLinkCountRegistration() FeatureRegistration {
+	return FeatureRegistration{
+		Feature: ScoreWrapper[LinkCountResult](AffiliateLinkCount),
 		Title:   "Affiliate Link Count",
 		Tags:    []string{"MARKETING", "AFFILIATE", "UNTRUSTWORTHY"},
-	})
+	}
 }

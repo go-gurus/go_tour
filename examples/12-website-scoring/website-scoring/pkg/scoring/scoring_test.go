@@ -13,7 +13,7 @@ func TestScoring(t *testing.T) {
 	}
 
 	t.Run("should return score = 0 when invoked with empty document and empty featureset", func(t *testing.T) {
-		assert.Equal(t, float64(0), score(nil, &fakeDocument))
+		assert.Equal(t, float64(0), computeScore(nil, &fakeDocument))
 	})
 
 	t.Run("should return score equal to fake set when invoked with empty document and single featureset", func(t *testing.T) {
@@ -22,6 +22,6 @@ func TestScoring(t *testing.T) {
 				return 1
 			},
 		}
-		assert.Equal(t, float64(1), score(fakeFeatureset, &fakeDocument))
+		assert.Equal(t, float64(1), computeScore(fakeFeatureset, &fakeDocument))
 	})
 }

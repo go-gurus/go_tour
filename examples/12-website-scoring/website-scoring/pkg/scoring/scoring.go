@@ -16,7 +16,8 @@ func computeScore(features FeatureSet, document *goquery.Document) (score float6
 }
 
 func Score(url string, featureTags ...string) (score float64) {
-	features := GetFeatures(featureTags...)
+	registry := NewDefaultRegistry()
+	features := registry.GetFeatures(featureTags...)
 	document, _ := download.DownloadWebsite(url)
 	return computeScore(features, document)
 }

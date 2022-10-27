@@ -14,11 +14,11 @@ type WordFrequencyResult struct {
 	WordCounts   map[string]int `json:"WordCounts"`
 }
 
-func (w *WordFrequencyResult) score() float64 {
+func (w WordFrequencyResult) Score() float64 {
 	return float64(w.TotalWords) / 10
 }
 
-func WordCount(doc *goquery.Document) float64 {
+func WordCount(doc *goquery.Document) WordFrequencyResult {
 	result := WordFrequencyResult{
 		WordCounts: make(map[string]int),
 	}
@@ -38,13 +38,13 @@ func WordCount(doc *goquery.Document) float64 {
 		result.CountedWords += v
 	}
 
-	return result.score()
+	return result
 }
 
-func init() {
-	RegisterScoringFeature(FeatureRegistration{
-		Feature: WordCount,
+func wordCountRegistration() FeatureRegistration {
+	return FeatureRegistration{
+		Feature: ScoreWrapper[WordFrequencyResult](WordCount),
 		Title:   "Word Count",
 		Tags:    []string{"CONTENT"},
-	})
+	}
 }
