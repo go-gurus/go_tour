@@ -1,3 +1,6 @@
+<!-- .slide: data-background="img/GENERICS/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+----
+
 ## generics
 
 We want to create a go program that provides various functions for processing lists of different types.
@@ -226,4 +229,4 @@ Generic Sums with Constraint: 46 and 62.97
   * [pkg.go.dev/github.com/samber/lo](https://pkg.go.dev/github.com/samber/lo)
   * [github.com/samber/lo](https://github.com/samber/lo)
 
-----
+---
