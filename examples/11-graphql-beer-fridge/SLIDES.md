@@ -1,3 +1,6 @@
+<!-- .slide: data-background="img/GRAPHQL/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+----
+
 ## GraphQL
 
 Our beer fridge provides HTTP/REST style APIs now. With Go, it is also possible to provide a GraphQL interface. Lets dive into
