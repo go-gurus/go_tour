@@ -584,6 +584,8 @@ curl -i localhost:8080/beers -d "{\"title\":\"The Alchemist Heady Topper\", \"or
 curl -i localhost:8080/beers -d "{\"title\":\"Founders KBS (Kentucky Breakfast Stout)\", \"origin\":\"Grand Rapids, Mich.\", \"volume-percentage\": 7}" -H 'Content-Type: application/de.codecentric.go-workshop.beer-fridge.v1+json'
 ```
 
+----
+
 * get all beers
 
 ```shell
@@ -646,12 +648,22 @@ ENTRYPOINT ["/beer-fridge-server", "--port", "8080"]
 
 ----
 
-### Further readings
+### What we have learned
+* How to write an open api yml file.
+* How to install and use go-swagger.
+* How to build an REST API from ground up.
+* How to develop with interface first approach.
 
-* [github.com/go-swagger/go-swagger](https://github.com/go-swagger/go-swagger)
-* [goswagger.io](https://goswagger.io/)
-* [goswagger.io/install.html](https://goswagger.io/install.html)
-* [goswagger.io/tutorial/todo-list.html](https://goswagger.io/tutorial/todo-list.html)
-* [github.com/go-swagger/go-swagger/tree/master/examples/tutorials/todo-list/server-complete](https://github.com/go-swagger/go-swagger/tree/master/examples/tutorials/todo-list/server-complete)
+----
+
+### Further readings
+* go-swagger
+    * [github.com/go-swagger/go-swagger](https://github.com/go-swagger/go-swagger)
+* install go-swagger
+    * [goswagger.io/install.html](https://goswagger.io/install.html)
+* go-swagger tutorial
+    * [goswagger.io/tutorial/todo-list.html](https://goswagger.io/tutorial/todo-list.html)
+* go-swagger complete example
+    * [github.com/go-swagger/go-swagger/tree/master/examples/tutorials/todo-list/server-complete](https://github.com/go-swagger/go-swagger/tree/master/examples/tutorials/todo-list/server-complete)
 
 ---
