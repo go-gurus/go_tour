@@ -57,6 +57,7 @@ brew install go
 
 ----
 ## Useful Go Tools
+* `go build` the go compiler
 * `go fmt` format your go code
 * `go get` load/installs dependencies
 * `go run` compiles and executes go code directly
