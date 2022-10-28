@@ -36,6 +36,10 @@ We will discuss further advantages of Go in more detail.
 
 ----
 
+<!-- .slide: data-background="img/INTRODUCTION/go_projects.jpg" data-background-size="80%" data-background-position="50% 50%" -->
+----
+
+
 ### Install Golang Linux, Windows, MacOS
 * download your package from [go.dev/dl/](https://go.dev/dl/)
 * follow instructions from [go.dev/doc/install](https://go.dev/doc/install)
