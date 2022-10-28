@@ -225,6 +225,7 @@ Generic Sums with Constraint: 46 and 62.97
 ### Further readings
 * generics tutorial
   * [go.dev/doc/tutorial/generics](https://go.dev/doc/tutorial/generics)
+  * [gobyexample.com/generics](https://gobyexample.com/generics)
 * lo - generics library
   * [pkg.go.dev/github.com/samber/lo](https://pkg.go.dev/github.com/samber/lo)
   * [github.com/samber/lo](https://github.com/samber/lo)
