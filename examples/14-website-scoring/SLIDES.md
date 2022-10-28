@@ -58,6 +58,8 @@ type FeatureRegistry struct {
 ```
 <small>pkg/scoring/scoringFeatureRegistry.go</small>
 
+----
+
 A registration consists of:
 ```golang
 type FeatureRegistration struct {
