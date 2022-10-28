@@ -26,7 +26,7 @@ func TestPrimeCheckerTheNaiveWay(t *testing.T) {
 
 	t.Run("should return TRUE when prime number given", func(t *testing.T) {
 		if IsPrime(7) == false {
-			t.Fatal("Reported IsPrime=true for 7")
+			t.Fatal("Reported IsPrime=false for 7")
 		}
 	})
 }
