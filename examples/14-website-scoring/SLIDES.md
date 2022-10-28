@@ -1,3 +1,6 @@
+<!-- .slide: data-background="img/WEBSITE_SCORING/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+----
+
 ## Website Scoring 
 
 Let's build a simple CLI tool and learn something about parsing commandlines, first-class functions and function types in Go along with a little generics. 
