@@ -1,4 +1,4 @@
-<!-- .slide: data-background="img/ABSTRACT/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/WEBSITE_SCORING/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 ----
 
 ## Website Scoring 

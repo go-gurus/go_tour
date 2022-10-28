@@ -1,3 +1,5 @@
+<!-- .slide: data-background="img/ABSTRACT/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+----
 ## Abstract
 
 ----
