@@ -4,7 +4,7 @@
 # Golang for Developers
 
 ----
-## Autors
+## Authors
 
 |                                                                |                                                                                                                                                                                                                                                                                    |
 |----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -43,7 +43,7 @@ We will discuss further advantages of Go in more detail.
 ### Install Golang Linux, Windows, MacOS
 * download your package from [go.dev/dl/](https://go.dev/dl/)
 * follow instructions from [go.dev/doc/install](https://go.dev/doc/install)
-* recommendet for MacOS [formulae.brew.sh/formula/go](https://formulae.brew.sh/formula/go)
+* recommended for MacOS [formulae.brew.sh/formula/go](https://formulae.brew.sh/formula/go)
 ```shell
 brew install go
 ```
