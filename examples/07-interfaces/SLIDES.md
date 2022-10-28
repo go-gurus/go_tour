@@ -114,7 +114,7 @@ func NewZapStruct() ZapStruct {
 ```golang
 // main.go
 // ...
-func resolveLogger() logInterface
+func resolveLogger() logInterface {
     var result logInterface
     if os.Getenv("LOGGER") == "logrus" {
         result = logrus_facade.LogrusStruct{}
