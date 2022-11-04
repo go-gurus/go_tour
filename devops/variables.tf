@@ -46,7 +46,7 @@ variable "main_service_name" {
 variable "main_service_container_name" {
   type        = string
   description = "name for main service"
-  default     = "golang_for_developers"
+  default     = "golang-for-developers"
 }
 
 variable "main_service_container_tag" {
