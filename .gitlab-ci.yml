@@ -2,32 +2,9 @@
 # https://docs.gitlab.com/ee/development/cicd/templates.html
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Terraform.gitlab-ci.yml
-
-workflow:
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
-      when: always
-      variables:
-        TF_STATE_NAME: "main"
-
-variables:
-  TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${TF_STATE_NAME}
-  TF_VAR_deployment_target: $TF_STATE_NAME
-  TF_VAR_main_service_container_tag: $CI_PIPELINE_IID
-  TF_ROOT: "${CI_PROJECT_DIR}/devops"
-
-include:
-  - template: Terraform/Base.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.gitlab-ci.yml
-  - template: Jobs/SAST-IaC.gitlab-ci.yml   # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Jobs/SAST-IaC.gitlab-ci.yml
-
-
 stages:
   - build_service
   - containerize
-  - validate
-  - test
-  - build
-  - deploy
 
 build-service:
   image: gitlab/gitlab-runner:alpine
@@ -59,43 +36,10 @@ docker-build:
     KUBERNETES_MEMORY_LIMIT: 2048Mi
   needs: ["build-service"]
   script:
-    - export TAG=$(date +%Y%m%d)_${CI_COMMIT_SHA:0:8}_${CI_COMMIT_REF_NAME}
-    - echo "{\"auths\":{\"$DOCKER_REGISTRY\":{\"username\":\"$DOCKER_REGISTRY_USER\",\"password\":\"$DOCKER_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $DOCKER_REGISTRY/$CI_PROJECT_NAME:$TAG
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $DOCKER_REGISTRY/$CI_PROJECT_NAME:$CI_PIPELINE_IID
-
-
-fmt:
-  extends: .terraform:fmt
-  needs: []
-
-validate:
-  extends: .terraform:validate
-  needs: []
-
-kics-iac-sast:
-  rules:
-    - if: $SAST_DISABLED
-      when: never
-    - if: $SAST_EXCLUDED_ANALYZERS =~ /kics/
-      when: never
-    - if: $CI_COMMIT_BRANCH
-    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
-
-build:
-  extends: .terraform:build
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      when: always
-    - when: never
-  needs: ["docker-build"]
-
-deploy:
-  extends: .terraform:deploy
-  environment:
-    name: $TF_STATE_NAME
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      when: always
-    - when: never
-  needs: ["docker-build", "build"]
+    - echo "{\"auths\":{\"$DOCKER_REGISTRY\":{\"username\":\"CI_REGISTRY_USER\",\"password\":\"CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY/$CI_PROJECT_NAME:$CI_PIPELINE_IID
+  release:
+    name: 'Release $CI_PIPELINE_IID'
+    description: 'Created using the release-cli'
+    tag_name: '$CI_PIPELINE_IID'
+    ref: '$CI_COMMIT_SHA'
