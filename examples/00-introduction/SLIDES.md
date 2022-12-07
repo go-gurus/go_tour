@@ -13,6 +13,8 @@
 
 
 ---
+<!-- .slide: data-background="img/INTRODUCTION/01.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+----
 
 ## Introduction
 Why should you look at the GO programming language?
@@ -56,7 +58,7 @@ brew install go
 
 
 ----
-## Useful Go Tools
+### Useful Go Tools
 * `go build` the go compiler
 * `go fmt` format your go code
 * `go get` load/installs dependencies
@@ -66,7 +68,7 @@ brew install go
 * `go generate` generates code from source files
 * `go version` determines the go version used
 ----
-## Useful Go Tools
+### Useful Go Tools
 * `go vet` finds potential errors in the application
 * `go bug` report error
 * `go doc` standard tool to view documentation and source code
@@ -75,7 +77,7 @@ brew install go
 * `go tool` lists tools
 
 ----
-## Set of Keywords
+### Set of Keywords
 
 ```
 break, case, chan, const, continue
@@ -87,7 +89,7 @@ type, var
 ```
 
 ----
-## Base Types
+### Base Types
 * bool
 * numeric types
   * int8, int16, int32, int64, int
@@ -97,6 +99,161 @@ type, var
   * byte (alias for uint8)
   * rune (alias for int32)
 * string
+----
+### Functions
+```go
+func add(x int, y int) int {
+	return x + y
+}
+```
+
+```go
+func add(x, y int) int {
+    return x + y
+}
+```
+
+----
+* multiple results
+
+```go
+func swap(x, y string) (string, string) {
+	return y, x
+}
+```
+* named return values
+
+```go
+func split(sum int) (x, y int) {
+    x = sum * 4 / 9
+    y = sum - x
+    return
+}
+```
+----
+### Variables
+```go
+var hot, wet, far bool
+var tool string
+var x int
+```
+* with initializers
+
+```go
+var x, y int = 1, 2
+var hot, wet, tool = true, false, "screwdriver"
+```
+* short declaration
+
+```go
+x := 3
+hot, wet, tool := true, false, "screwdriver"
+```
+----
+### Loops
+
+```go
+for i := 0; i < 10; i++ {
+	sum += i
+}
+```
+* optional init and post statements, while loop
+
+```go
+sum := 1
+for sum < 1000; {
+    sum += sum
+}
+```
+
+* endless loop
+
+```go
+for {
+}
+```
+----
+### If statement
+```go
+if x < 0 {
+	return "something"
+}
+```
+```go
+if a < b {
+	return a
+} else {
+    return b
+}
+```
+----
+### Switch Statement
+
+
+```go
+os := runtime.GOOS
+switch os {
+case "darwin":
+    fmt.Println("OS X.")
+case "linux":
+    fmt.Println("Linux.")
+default:
+    // freebsd, openbsd, plan9, windows...
+    fmt.Printf("%s.\n", os)
+}
+```
+
+----
+### Defer
+
+* defers the execution of a function until the surrounding function returns
+
+```go
+func main() {
+    defer fmt.Println("world")
+    fmt.Println("hello")
+}
+```
+----
+### Structs
+```go
+type Vertex struct {
+    X int
+    Y int
+}
+
+func main() {
+    v := Vertex{1, 2}
+    v.X = 4
+    fmt.Println(v.X)
+}
+```
+----
+### Arrays
+
+```go
+var tools [2]string
+a[0] = "screwdriver"
+a[1] = "hammer"
+
+primes := [6]int{2, 3, 5, 7, 11, 13}
+```
+----
+### Slices
+
+```go
+primes := [6]int{2, 3, 5, 7, 11, 13}
+
+var s []int = primes[1:4]
+```
+
+----
+### Tour of go
+
+* for more topics checkout the tour of go
+
+![go-playground](img/INTRODUCTION/tour_of_go.png)<!-- .element height="400px" -->
+[go.dev/tour](https://go.dev/tour/)
 
 ----
 ### What we have learned
@@ -105,12 +262,14 @@ type, var
 * overview of go tools
 * overview of go keywords
 * overview of base types
+* `tour of go` is a good starting point
 
 ----
 ### Further readings
 * Documentation
-    * [golang.org/pkg/ ](https://golang.org/pkg/)
+  * [golang.org/pkg](https://golang.org/pkg/)
 * Go Packages
-    * [pkg.go.dev/](https://pkg.go.dev/)
-
+  * [pkg.go.dev](https://pkg.go.dev/)
+* Tour of Go
+  * [go.dev/tour](https://go.dev/tour/)
 ---
