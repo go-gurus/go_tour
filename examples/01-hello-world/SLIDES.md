@@ -57,10 +57,37 @@ $file main
 main: Mach-O 64-bit executable x86_64
 ```
 ----
+* e.g. build `windows/amd64` binary on `darwin/arm64`
+
+```shell
+GOOS=windows GOARCH=amd64 go build main.go
+```
+
+![windows-proof](img/HELLO_WORLD/02.png)<!-- .element height="300px" -->
+
+----
+
+* e.g. build `darwin/arm64` binary on `windows/amd64`
+
+```shell
+$Env:GOOS="darwin"; $Env:GOARCH="amd64"; go build main.go
+```
+
+![windows-proof](img/HELLO_WORLD/03.png)<!-- .element height="300px" -->
+
+```shell
+$ ./main
+Hello World! This is Go.
+```
+----
 ### What we have learned
 * Go belongs to the C/Java syntactic family
 * There are packages and imports, such as in Java
+* Hello World example
+* Crosscompiling in action
 
+----
+### Further readings
 
 Useful links:
 - [Golang cross compiling](https://golangcookbook.com/chapters/running/cross-compiling/0)
