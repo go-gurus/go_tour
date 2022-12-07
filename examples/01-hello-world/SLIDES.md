@@ -80,17 +80,26 @@ $ ./main
 Hello World! This is Go.
 ```
 ----
+### Possible Crosscompile Configurations
+* [go.dev/doc/install/source#environment](https://go.dev/doc/install/source#environment)
+
+![windows-proof](img/HELLO_WORLD/04.png)<!-- .element height="400px" -->
+
+----
 ### What we have learned
 * Go belongs to the C/Java syntactic family
 * There are packages and imports, such as in Java
 * Hello World example
 * Crosscompiling in action
+* Crosscompile Configurations
 
 ----
 ### Further readings
 
-Useful links:
-- [Golang cross compiling](https://golangcookbook.com/chapters/running/cross-compiling/0)
+* Crosscompile
+  * [golangcookbook.com/chapters/running/cross-compiling/0](https://golangcookbook.com/chapters/running/cross-compiling/0)
+* Crosscompile Configuration
+  * [go.dev/doc/install/source#environment](https://go.dev/doc/install/source#environment)
 
 Note: speaker notes FTW!
 
