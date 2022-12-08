@@ -11,9 +11,22 @@ In this task, you will learn about writing tests in Go by developing a prime tes
 
 ### Solution
 
-Lets write a test to specify what we expect from the prime checker yet to be developed.
+* lets write a simple `main.go` file
+
+```go
+// main.go
+package main
+
+func main() {
+}
+```
+
+----
+
+* now, Lets write a test to specify what we expect from the prime checker yet to be developed.
 
 ```golang
+// main_test.go
 package main
 import 	"testing"
 
@@ -54,6 +67,12 @@ The test will fail, because the function `IsPrime` is yet to be implemented.
 ### Implement the (naive) IsPrime function
 
 ```golang
+// main.go
+// ...
+import (
+  "math"
+)
+
 func IsPrime(value int) (result bool) {
 	for i := 2; i <= int(math.Floor(math.Sqrt(float64(value)))); i++ {
 		if value %i == 0 {
@@ -62,9 +81,10 @@ func IsPrime(value int) (result bool) {
 	}
 	return value > 1
 }
+// ...
 ```
 
-Now,the tests run:
+* run the tests again
 
 ```bash
 go test main.go main_test.go
@@ -75,6 +95,8 @@ ok      command-line-arguments  0.102s
 
 Cut down redundancy in your tests:
 ```golang
+// main_test.go
+// ...
 func TestPrimeCheckerTableDriven(t *testing.T) {
 	cases := []struct {
 		input          int
@@ -100,6 +122,39 @@ func TestPrimeCheckerTableDriven(t *testing.T) {
 	}
 }
 ```
+----
+### Code Coverage
+
+* now lets execute the tests with coverage
+
+```bash
+$ go test -cover main.go main_test.go
+ok      command-line-arguments  0.191s  coverage: 100.0% of statements
+```
+----
+
+* lets add also a report
+
+```bash
+go test -coverprofile=coverage.out main.go main_test.go
+```
+
+```text
+mode: set
+/Users/grohmio/repos/cc/gophers/golang-for-developers/examples/03-prime-checker/main.go:7.14,8.2 0 0
+/Users/grohmio/repos/cc/gophers/golang-for-developers/examples/03-prime-checker/main.go:10.39,11.67 1 1
+/Users/grohmio/repos/cc/gophers/golang-for-developers/examples/03-prime-checker/main.go:16.2,16.18 1 1
+/Users/grohmio/repos/cc/gophers/golang-for-developers/examples/03-prime-checker/main.go:11.67,12.19 1 1
+/Users/grohmio/repos/cc/gophers/golang-for-developers/examples/03-prime-checker/main.go:12.19,14.4 1 1
+```
+----
+* now lets use the go `coverage` tool to generate a graphical report
+
+```bash
+go tool cover -html=coverage.out main.go main_test.go
+```
+
+![go-playground](img/PRIME_CHECKER/02.png)<!-- .element height="500px" -->
 
 ----
 ### What we have learned
@@ -107,5 +162,7 @@ func TestPrimeCheckerTableDriven(t *testing.T) {
 * How to run tests
 * Write our first Go function with in and out parameters
 * Basic loops and branching
+* How to show code coverage
+* How to create coverage reports
 
 ---
