@@ -1,11 +1,18 @@
-## chi web framework
+[//]: # (## chi web framework)
 
-We want to build the `beer-fridge` service again.
-This service using `chi` an other web framework.
-COMING NEXT
+[//]: # ()
+[//]: # (We want to build the `beer-fridge` service again.)
 
-----
-### Further readings
-COMING NEXT
+[//]: # (This service using `chi` an other web framework.)
 
----
+[//]: # (COMING NEXT)
+
+[//]: # ()
+[//]: # (----)
+
+[//]: # (### Further readings)
+
+[//]: # (COMING NEXT)
+
+[//]: # ()
+[//]: # (---)
