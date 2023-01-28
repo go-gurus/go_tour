@@ -1,0 +1,7 @@
+jobs:
+  build-service:
+    if: contains( github.ref, 'master')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./build.sh
