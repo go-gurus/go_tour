@@ -1,6 +1,12 @@
 jobs:
   build-service:
-    if: contains( github.ref, 'master')
+    if: contains( github.ref, 'main')
+    on:
+      push:
+        branches:
+          - 'main'
+      pull-request:
+        types: [opened, reopened]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
