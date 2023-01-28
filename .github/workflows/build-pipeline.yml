@@ -27,23 +27,36 @@ jobs:
 #        with:
 #          push: true
 #          tags: user/app:latest
-  build:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: docker/metadata-action@v3
+#        id: metadata
+#        with:
+#          images: ghcr.io/${{ github.repository }}
+#      - uses: docker/login-action@v1
+#        with:
+#          registry: ghcr.io
+#          username: ${{ github.actor }}
+#          password: ${{ secrets.GITHUB_TOKEN }}
+#      - uses: int128/kaniko-action@v1
+#        with:
+#          push: true
+#          labels: ${{ steps.metadata.outputs.labels }}
+#          cache: true
+#          cache-repository: ghcr.io/${{ github.repository }}/cache
+#          tags: ${{github.run_number}}
+  docker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: docker/metadata-action@v3
-        id: metadata
+      - uses: actions/checkout@master
+      - name: Kaniko build
+        uses: aevea/action-kaniko@master
         with:
-          images: ghcr.io/${{ github.repository }}
-      - uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: int128/kaniko-action@v1
-        with:
-          push: true
-          labels: ${{ steps.metadata.outputs.labels }}
+          image: aevea/kaniko
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
           cache: true
-          cache-repository: ghcr.io/${{ github.repository }}/cache
-          tags: ${{github.run_number}}
+          cache_registry: aevea/cache
+          tag: ${{github.run_number}}
