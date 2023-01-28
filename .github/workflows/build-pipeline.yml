@@ -1,6 +1,5 @@
 jobs:
   build-service:
-    if: contains( github.ref, 'main')
     on:
       push:
         branches:
