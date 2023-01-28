@@ -1,4 +1,4 @@
 .idea
-resources/golang-for-developers.md
+resources/go-tour.md
 .DS_Store
 devops/.terraform*

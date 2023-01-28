@@ -1,6 +1,6 @@
 #!/bin/bash
-OUTFILE=golang-for-developers.md
+OUTFILE=go-tour.md
 cd resources
-echo "start building resources/golang-for-developers.md from examples/*/SLIDES.md"
-rm -f $OUTFILE ; touch $OUTFILE ; find ../examples/**/SLIDES.md -exec cat {} >> $OUTFILE \; -exec echo >> $OUTFILE \;
-echo "finished building resources/golang-for-developers.md"
+echo "start building resources/go-tour.md from slides/*/SLIDES.md"
+rm -f $OUTFILE ; touch $OUTFILE ; find ../slides/**/SLIDES.md -exec cat {} >> $OUTFILE \; -exec echo >> $OUTFILE \;
+echo "finished building resources/go-tour.md"

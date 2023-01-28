@@ -1,6 +1,6 @@
-# Golang Workshop for Developers
+# Go Tour
 
-golang introduction workshop
+golang workshop, for beginners and advanced developers
 
 ## Prerequisites
 
@@ -30,8 +30,8 @@ $ docker run --rm -p 8080:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:la
 * or build and run a container
 
 ```bash
-$ docker build --platform linux/amd64 --tag grohmio/golang-for-developers:latest .
-$ docker run --rm -p 8080:8080 grohmio/golang-for-developers:latest
+$ docker build --platform linux/amd64 --tag grohmio/go-tour:latest .
+$ docker run --rm -p 8080:8080 grohmio/go-tour:latest
 ```
 
 * open the slides: [http://localhost:8080](http://localhost:8080)
