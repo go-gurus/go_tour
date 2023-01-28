@@ -1,11 +1,15 @@
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull-request:
+    branches:
+      - 'main'
+    types: [opened, reopened]
+
 jobs:
   build-service:
-    on:
-      push:
-        branches:
-          - 'main'
-      pull-request:
-        types: [opened, reopened]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
