@@ -9,7 +9,7 @@
 |                                                                |                                                                                                                                                                                                                                                                                    |
 |----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ![Manfred](img/cc_manfred.jpg)<!-- .element height="200px" --> | <ul><li>[Manfred Dreese](https://codecentric.de)<br />[dreese.de](https://dreese.de)<br />[github/i78](https://github.com/i78)<br />[twitter/dem9d](https://twitter.com/dem9d)<br /></li></ul>                                                                                     |
-| ![grohmio](img/cc_grohmio.png)<!-- .element height="200px" --> | <ul><li>[Andreas Grohmann](https://codecentric.de)<br />[grohm.io](https://grohm.io)<br />[github/grohmio](https://github.com/grohmio)<br />[twitter/grohmeo](https://twitter.com/grohmeo)<br />[stackoverflow/grohmio](https://stackoverflow.com/users/6654539/grohmio)</li></ul> |
+| ![grohmio](img/cc_grohmio.png)<!-- .element height="200px" --> | <ul><li>[Andreas Grohmann](https://grohm.io)<br />[grohm.io](https://grohm.io)<br />[github/grohmio](https://github.com/grohmio)<br />[twitter/grohmeo](https://twitter.com/grohmeo)<br />[stackoverflow/grohmio](https://stackoverflow.com/users/6654539/grohmio)</li></ul> |
 
 ----
 ## Workshop Abstract

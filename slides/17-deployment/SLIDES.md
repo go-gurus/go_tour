@@ -118,7 +118,7 @@ func main() {
 * init module
 
 ```bash
-go mod init codecentric.de/flyio
+go mod init grohm.io/flyio
 ```
 
 ----

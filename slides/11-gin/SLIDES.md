@@ -71,7 +71,7 @@ $ go get -u golang.org/x/sys
 ----
 
 ```bash
-$ go mod init codecentric.de/gin-ping-pong
+$ go mod init grohm.io/gin-ping-pong
 $ go run main.go
 ```
 ----

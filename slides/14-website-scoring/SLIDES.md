@@ -299,8 +299,8 @@ func Score(url string, featureTags ...string) (score float64) {
 ### Run it
 
 ```
-$ website_score --url https://codecentric.de
-Website=https://codecentric.de Score=244.200000
+$ website_score --url https://grohm.io
+Website=https://grohm.io Score=244.200000
 ```
 
 ----

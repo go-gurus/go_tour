@@ -159,7 +159,7 @@ paths:
 * init module, generate service and get modules
 
 ```shell
-➜ go mod init codecentric.de/beer-fridge-go-swagger
+➜ go mod init grohm.io/beer-fridge-go-swagger
 ➜ swagger generate server -A beer-fridge -f ./swagger.yml
 ➜ go get -u -f ./...
 ```
@@ -431,7 +431,7 @@ go get -u -f ./...
 package beers
 
 import (
-	"codecentric.de/beer-fridge-go-swagger/models"
+	"grohm.io/beer-fridge-go-swagger/models"
 	"github.com/go-openapi/errors"
 	"sync"
 	"sync/atomic"
@@ -545,7 +545,7 @@ func configureAPI(api *operations.BeerFridgeAPI) http.Handler {
 package temperature
 
 import (
-	"codecentric.de/beer-fridge-go-swagger/models"
+	"grohm.io/beer-fridge-go-swagger/models"
 	"math/rand"
 )
 

@@ -39,13 +39,13 @@ func main() {
 * init modules
 
 ```bash
-$ go mod init codecentric.de/hello-logrus/v2
+$ go mod init grohm.io/hello-logrus/v2
 ```
 
 * a new file `go.mod` will be generated
 
 ```golang
-module codecentric.de/hello-logrus/v2
+module grohm.io/hello-logrus/v2
 go 1.17
 ```
 
@@ -96,7 +96,7 @@ func main() {
 * init module, install zap and run `main.go`
 
 ```bash
-$ go mod init codecentric.de/hello-zap/v2
+$ go mod init grohm.io/hello-zap/v2
 $ go get -u go.uber.org/zap
 $ go run main.go
 {"level":"info","ts":1644345019.7559521,"caller":"02-hello-zap/main.go:11","msg":"Hello from zap.","logger":"zap","backoff":1}
@@ -194,7 +194,7 @@ func main() {
 ```
 ----
 ```bash
-$ go mod init codecentric.de/hello-golog/v2
+$ go mod init grohm.io/hello-golog/v2
 $ go get -u github.com/kataras/golog
 $ go run main.go
 2022/02/09 19:12 This is a raw message, no levels, no colors.
@@ -240,7 +240,7 @@ func main() {
 * generate vendor folder
 
 ```bash
-$ go mod init codecentric.de/hello-zap-vendor
+$ go mod init grohm.io/hello-zap-vendor
 $ go get go.uber.org/zap
 $ go mod vendor
 ```

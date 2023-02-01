@@ -98,7 +98,7 @@ func TestPrimeCheckerTableDriven(t *testing.T) {
 * initialize module
 
 ```bash
-go mod init codecentric.de/pipelines_showcase
+go mod init grohm.io/pipelines_showcase
 ```
 
 * create empty file `go.sum`

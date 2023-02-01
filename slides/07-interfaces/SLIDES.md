@@ -155,7 +155,7 @@ func main() { doSomething() }
 * init project and download modules
 
 ```bash
-$ go mod init codecentric.de/interfaces/v2
+$ go mod init grohm.io/interfaces/v2
 $ go get github.com/sirupsen/logrus
 $ go get -u go.uber.org/zap
 $ go get -u github.com/kataras/golog
@@ -181,7 +181,7 @@ ERRO[0001] i really dont care which logging tool is used to put this error (logr
 $ LOGGER=zap go run main.go
 {"level":"info","ts":1644693743.249532,"caller":"zap_facade/zap_facade.go:14","msg":"i really dont care which logging tool is used to put this info (zap)"}
 {"level":"error","ts":1644693744.2508721,"caller":"zap_facade/zap_facade.go:19","msg":"i really dont care which logging tool is used to put this error (zap)",
-"stacktrace":"codecentric.de/interfaces/v2/zap_facade.ZapStruct.Error\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/zap_facade/zap_facade.go:19\nmain.doSomething\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/main.go:35\nmain.main\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/main.go:39\nruntime.main\n\t/usr/local/opt/go/libexec/src/runtime/proc.go:255"}
+"stacktrace":"grohm.io/interfaces/v2/zap_facade.ZapStruct.Error\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/zap_facade/zap_facade.go:19\nmain.doSomething\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/main.go:35\nmain.main\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/main.go:39\nruntime.main\n\t/usr/local/opt/go/libexec/src/runtime/proc.go:255"}
 ```
 ----
 
@@ -285,7 +285,7 @@ func Test_doSomething(t *testing.T) {
 ```bash
 $ LOGGER=logrus go test
 PASS
-ok      codecentric.de/interfaces/v2    1.444s
+ok      grohm.io/interfaces/v2    1.444s
 ```
 
 ----

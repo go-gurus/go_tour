@@ -20,7 +20,7 @@ https://github.com/go-gurus/go_tour_src/tree/main/documentation
 ```shell
 $ mkdir documentation
 $ cd documentation
-$ go mod init codecentric.de/documentation
+$ go mod init grohm.io/documentation
 ```
 
 ----
@@ -74,7 +74,7 @@ $ go install -v golang.org/x/tools/cmd/godoc@latest
 $ ~/go/bin/godoc -http :6060
 ```
 
-* visit [localhost:6060/pkg/codecentric.de/documentation/](http://localhost:6060/pkg/codecentric.de/documentation/)
+* visit [localhost:6060/pkg/grohm.io/documentation/](http://localhost:6060/pkg/grohm.io/documentation/)
 
 ----
 
@@ -106,7 +106,7 @@ $ go test ./...
 $ ~/go/bin/godoc -http :6060
 ```
 
-* visit [localhost:6060/pkg/codecentric.de/documentation/](http://localhost:6060/pkg/codecentric.de/documentation/)
+* visit [localhost:6060/pkg/grohm.io/documentation/](http://localhost:6060/pkg/grohm.io/documentation/)
 
 ----
 
