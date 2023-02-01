@@ -48,8 +48,8 @@ swagger init spec \
   --description "Beer fridge service build with go-swagger" \
   --version 1.0.0 \
   --scheme http \
-  --consumes application/de.codecentric.go-workshop.beer-fridge.v1+json \
-  --produces application/de.codecentric.go-workshop.beer-fridge.v1+json
+  --consumes application/io.grohm.go-workshop.beer-fridge.v1+json \
+  --produces application/io.grohm.go-workshop.beer-fridge.v1+json
 ```
 
 ----
@@ -59,14 +59,14 @@ swagger init spec \
 ```yaml
 # swagger.yml
 consumes:
-- application/de.codecentric.go-workshop.beer-fridge.v1+json
+- application/io.grohm.go-workshop.beer-fridge.v1+json
 info:
   description: Beer fridge service build with go-swagger
   title: A beer fridge service
   version: 1.0.0
 paths: {}
 produces:
-- application/de.codecentric.go-workshop.beer-fridge.v1+json
+- application/io.grohm.go-workshop.beer-fridge.v1+json
 schemes:
 - http
 swagger: "2.0"
@@ -303,13 +303,13 @@ paths:
 
 ```yaml
 consumes:
-- application/de.codecentric.go-workshop.beer-fridge.v1+json
+- application/io.grohm.go-workshop.beer-fridge.v1+json
 info:
   description: Beer fridge service build with go-swagger
   title: A beer fridge service
   version: 1.0.0
 produces:
-- application/de.codecentric.go-workshop.beer-fridge.v1+json
+- application/io.grohm.go-workshop.beer-fridge.v1+json
 schemes:
 - http
 swagger: "2.0"
@@ -583,9 +583,9 @@ go build -o beer-fridge-server ./cmd/beer-fridge-server/main.go
 * add 3 beers
 
 ```shell
-curl -i localhost:8080/beers -d "{\"title\":\"Three Floyds Brewing Co.\", \"origin\":\"Munster, Ind.\", \"volume-percentage\": 5}" -H 'Content-Type: application/de.codecentric.go-workshop.beer-fridge.v1+json'
-curl -i localhost:8080/beers -d "{\"title\":\"The Alchemist Heady Topper\", \"origin\":\"Waterbury, Vt.\", \"volume-percentage\": 6}" -H 'Content-Type: application/de.codecentric.go-workshop.beer-fridge.v1+json'
-curl -i localhost:8080/beers -d "{\"title\":\"Founders KBS (Kentucky Breakfast Stout)\", \"origin\":\"Grand Rapids, Mich.\", \"volume-percentage\": 7}" -H 'Content-Type: application/de.codecentric.go-workshop.beer-fridge.v1+json'
+curl -i localhost:8080/beers -d "{\"title\":\"Three Floyds Brewing Co.\", \"origin\":\"Munster, Ind.\", \"volume-percentage\": 5}" -H 'Content-Type: application/io.grohm.go-workshop.beer-fridge.v1+json'
+curl -i localhost:8080/beers -d "{\"title\":\"The Alchemist Heady Topper\", \"origin\":\"Waterbury, Vt.\", \"volume-percentage\": 6}" -H 'Content-Type: application/io.grohm.go-workshop.beer-fridge.v1+json'
+curl -i localhost:8080/beers -d "{\"title\":\"Founders KBS (Kentucky Breakfast Stout)\", \"origin\":\"Grand Rapids, Mich.\", \"volume-percentage\": 7}" -H 'Content-Type: application/io.grohm.go-workshop.beer-fridge.v1+json'
 ```
 
 ----
@@ -605,13 +605,13 @@ curl -i localhost:8080/temperature
 * delete a beer
 
 ```shell
-curl -i localhost:8080/beers/1 -X DELETE -H 'Content-Type: application/de.codecentric.go-workshop.beer-fridge.v1+json'
+curl -i localhost:8080/beers/1 -X DELETE -H 'Content-Type: application/io.grohm.go-workshop.beer-fridge.v1+json'
 ```
 
 * lets try something
 
 ```shell
-$ curl -i localhost:8080/beers/3 -H 'Content-Type: application/de.codecentric.go-workshop.beer-fridge.v1+json'
+$ curl -i localhost:8080/beers/3 -H 'Content-Type: application/io.grohm.go-workshop.beer-fridge.v1+json'
 HTTP/1.1 405 Method Not Allowed
 Allow: DELETE
 Content-Type: application/json
