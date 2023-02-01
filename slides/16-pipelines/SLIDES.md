@@ -1,7 +1,7 @@
 <!-- .slide: data-background="img/PIPELINES/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 ----
 
-## deployment
+## pipelines
 
 We want to build a simple pipeline for one of our go services.
 
@@ -270,31 +270,31 @@ workflow:
 * add changes, commit and push
 * the pipeline should look like this
 
-![fly.io](img/PIPELINES/01.png)<!-- .element height="400px" -->
+![GitLab](img/PIPELINES/01.png)<!-- .element height="400px" -->
 
 ----
 
 * enter the test job, check the coverage, check artifacts
 
-![fly.io](img/PIPELINES/02.png)<!-- .element height="400px" -->
+![GitLab](img/PIPELINES/02.png)<!-- .element height="400px" -->
 
 ----
 
 * check coverage report artifact
 
-![fly.io](img/PIPELINES/03.png)<!-- .element height="400px" -->
+![GitLab](img/PIPELINES/03.png)<!-- .element height="400px" -->
 
 ----
 
 * report should look like this
 
-![fly.io](img/PIPELINES/04.png)<!-- .element height="400px" -->
+![GitLab](img/PIPELINES/04.png)<!-- .element height="400px" -->
 
 ----
 
 * check also the docker image in the registry
 
-![fly.io](img/PIPELINES/05.png)<!-- .element height="400px" -->
+![GitLab](img/PIPELINES/05.png)<!-- .element height="400px" -->
 
 ----
 
