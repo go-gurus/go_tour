@@ -9,6 +9,7 @@ We want to build a simple pipeline for one of our go services.
 
 ### Complete Source Code
 * [github.com/go-gurus/go_tour_src/tree/main/pipelines](https://github.com/go-gurus/go_tour_src/tree/main/pipelines)
+* see it action here [gitlab.com/grohmio/go-tour-pipelines-showcase](https://gitlab.com/grohmio/go-tour-pipelines-showcase)
 
 ----
 
