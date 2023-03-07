@@ -156,6 +156,37 @@ docker-compose up beerfridge_db
 
 ----
 
+* also add some dependencies
+```xml
+<!-- springboot/beerfridge/pom.xml -->
+...
+  <dependencies>
+    ...  
+    <!-- Swagger Code Generation -->
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>0.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-boot-starter</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>1.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>2.0.1.Final</version>
+    </dependency>
+```
+
+----
+
 * lets add the openapi interface file using [editor.swagger.io/](https://editor.swagger.io/) and the `swagger.yml` from our previous section
 
 ```yaml
@@ -284,6 +315,14 @@ components:
           type: string
 
 ```
+
+----
+
+* start the generation
+
+```shell
+mvn clean compile
+``` 
 
 ----
 
