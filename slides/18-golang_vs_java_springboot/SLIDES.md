@@ -143,8 +143,11 @@ docker-compose up beerfridge_db
 								${project.basedir}/src/main/resources/openapi.yml
 							</inputSpec>
 							<generatorName>spring</generatorName>
-							<apiPackage>io.grohm.beerfridge.SwaggerCodgen.api</apiPackage>
-							<modelPackage>io.grohm.beerfridge.SwaggerCodgen.model</modelPackage>
+							<apiPackage>io.grohm.beerfridge.gen.api</apiPackage>
+							<modelPackage>io.grohm.beerfridge.gen.model</modelPackage>
+								<supportingFilesToGenerate>
+									ApiUtil.java
+								</supportingFilesToGenerate>
 						</configuration>
 					</execution>
 				</executions>
@@ -163,26 +166,36 @@ docker-compose up beerfridge_db
   <dependencies>
     ...  
     <!-- Swagger Code Generation -->
-    <dependency>
-      <groupId>org.openapitools</groupId>
-      <artifactId>jackson-databind-nullable</artifactId>
-      <version>0.2.1</version>
-    </dependency>
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-boot-starter</artifactId>
-      <version>3.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.swagger</groupId>
-        <artifactId>swagger-annotations</artifactId>
-        <version>1.6.2</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <version>2.0.1.Final</version>
-    </dependency>
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>2.2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+		</dependency>
 ```
 
 ----
@@ -322,7 +335,9 @@ components:
 
 ```shell
 mvn clean compile
-``` 
+```
+
+* check the generated files under `springboot/beerfridge/target/generated-sources/openapi/src/main/java/io/grohm/beerfridge/gen`
 
 ----
 
