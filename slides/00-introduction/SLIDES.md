@@ -4,7 +4,6 @@
 # Go Tour
 
 ----
-
 ## Authors
 
 |                                                                |                                                                                                                                                                                                                                                                                    |
@@ -165,6 +164,29 @@ func split(sum int) (x, y int) {
     x = sum * 4 / 9
     y = sum - x
     return
+}
+```
+----
+* first class functions
+
+```go
+func process(sample int, fn func(int) int) int {
+	return fn(sample)
+}
+
+func adder(term int) func(a int) int {
+	return func(a int) int { return a + term }
+}
+
+func increment(term int) int {
+	return adder(1)(term)
+}
+
+func main() {
+	sample := 23
+	fmt.Println(process(sample, increment),
+		process(sample, adder(100)))
+
 }
 ```
 
