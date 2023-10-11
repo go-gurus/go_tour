@@ -6,12 +6,14 @@ In this task, you will learn about writing tests in Go by developing a prime tes
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/prime-checker](https://github.com/go-gurus/go_tour_src/tree/main/prime-checker)
 
 ----
 <!-- .slide: data-background="img/PRIME_CHECKER/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ### Solution
 
@@ -32,7 +34,7 @@ func main() {
 ```golang
 // main_test.go
 package main
-import 	"testing"
+import "testing"
 
 func TestPrimeCheckerTheNaiveWay(t *testing.T) {
 	t.Run("should return FALSE when no prime number given", func(t *testing.T) {
@@ -50,6 +52,7 @@ func TestPrimeCheckerTheNaiveWay(t *testing.T) {
 ```
 
 ----
+
 ### Executing tests
 
 ```bash
@@ -94,7 +97,9 @@ func IsPrime(value int) (result bool) {
 go test main.go main_test.go
 ok      command-line-arguments  0.102s
 ```
+
 ----
+
 ### Table-driven tests
 
 Cut down redundancy in your tests:
@@ -126,7 +131,9 @@ func TestPrimeCheckerTableDriven(t *testing.T) {
 	}
 }
 ```
+
 ----
+
 ### Code Coverage
 
 * now lets execute the tests with coverage
@@ -135,6 +142,7 @@ func TestPrimeCheckerTableDriven(t *testing.T) {
 $ go test -cover main.go main_test.go
 ok      command-line-arguments  0.191s  coverage: 100.0% of statements
 ```
+
 ----
 
 * lets add also a report
@@ -151,7 +159,9 @@ mode: set
 /Users/grohmio/repos/cc/gophers/golang-for-developers/examples/03-prime-checker/main.go:11.67,12.19 1 1
 /Users/grohmio/repos/cc/gophers/golang-for-developers/examples/03-prime-checker/main.go:12.19,14.4 1 1
 ```
+
 ----
+
 * now lets use the go `coverage` tool to generate a graphical report
 
 ```bash
@@ -161,6 +171,7 @@ go tool cover -html=coverage.out main.go main_test.go
 ![go-playground](img/PRIME_CHECKER/02.png)<!-- .element height="500px" -->
 
 ----
+
 ### What we have learned
 * How to use the Go testing package
 * How to run tests

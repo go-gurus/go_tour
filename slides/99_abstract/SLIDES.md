@@ -1,5 +1,7 @@
 <!-- .slide: data-background="img/ABSTRACT/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 ----
+
 ## Abstract
 
 ----
@@ -7,6 +9,7 @@
 ### Books
 
 ----
+
 * [Learning Go](https://www.oreilly.com/library/view/learning-go/9781492077206/)
 
 ![learning go](img/ABSTRACT/learning_go_book.jpg)<!-- .element height="400px" -->

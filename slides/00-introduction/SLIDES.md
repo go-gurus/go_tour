@@ -4,6 +4,7 @@
 # Go Tour
 
 ----
+
 ## Authors
 
 |                                                                |                                                                                                                                                                                                                                                                                    |
@@ -12,6 +13,26 @@
 | ![grohmio](img/cc_grohmio.png)<!-- .element height="200px" --> | <ul><li>[Andreas Grohmann](https://grohm.io)<br />[grohm.io](https://grohm.io)<br />[github/grohmio](https://github.com/grohmio)<br />[twitter/grohmeo](https://twitter.com/grohmeo)<br />[stackoverflow/grohmio](https://stackoverflow.com/users/6654539/grohmio)</li></ul> |
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00-big.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
+----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
+## Materials
+* slides
+  * [go-gurus.github.io/go_tour]( https://go-gurus.github.io/go_tour)
+  * [go.grohm.io](https://go.grohm.io)
+* source code
+  * [github.com/go-gurus/go_tour_src](https://github.com/go-gurus/go_tour_src)
+* presentation
+  * [github.com/go-gurus/go_tour](https://github.com/go-gurus/go_tour)
+* Slack
+  * [go-gurus.slack.com](https://go-gurus.slack.com)
+* github
+  * [github.com/go-gurus](https://github.com/go-gurus)
+
+----
+
 ## Workshop Abstract
 Golang powers some of the most relevant IT projects of the last decade, such as Docker or Kubernetes. A lot of this success can be traced back to its simplicity, efficiency, tooling and developer experience.
 
@@ -19,6 +40,7 @@ In this workshop, we assume that the participants are already fluent with anothe
 
 ---
 <!-- .slide: data-background="img/INTRODUCTION/01.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 ----
 
 ## Introduction
@@ -42,15 +64,16 @@ We will discuss further advantages of Go in more detail.
 * completely downward compatible
 
 ----
-
 <!-- .slide: data-background="img/INTRODUCTION/go_projects.jpg" data-background-size="80%" data-background-position="50% 50%" -->
-----
 
+----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ### Install Golang Linux, Windows, MacOS
 * download your package from [go.dev/dl/](https://go.dev/dl/)
 * follow instructions from [go.dev/doc/install](https://go.dev/doc/install)
 * recommended for MacOS [formulae.brew.sh/formula/go](https://formulae.brew.sh/formula/go)
+
 ```shell
 brew install go
 ```
@@ -63,6 +86,7 @@ brew install go
 
 
 ----
+
 ### Useful Go Tools
 * `go build` the go compiler
 * `go fmt` format your go code
@@ -72,7 +96,9 @@ brew install go
 * `go mod [download|edit|graph|init|tidy|vendor|verify|why]` manages modules
 * `go generate` generates code from source files
 * `go version` determines the go version used
+
 ----
+
 ### Useful Go Tools
 * `go vet` finds potential errors in the application
 * `go bug` report error
@@ -82,6 +108,7 @@ brew install go
 * `go tool` lists tools
 
 ----
+
 ### Set of Keywords
 
 ```
@@ -94,6 +121,7 @@ type, var
 ```
 
 ----
+
 ### Base Types
 * bool
 * numeric types
@@ -104,7 +132,9 @@ type, var
   * byte (alias for uint8)
   * rune (alias for int32)
 * string
+
 ----
+
 ### Functions
 ```go
 func add(x int, y int) int {
@@ -119,6 +149,7 @@ func add(x, y int) int {
 ```
 
 ----
+
 * multiple results
 
 ```go
@@ -126,6 +157,7 @@ func swap(x, y string) (string, string) {
 	return y, x
 }
 ```
+
 * named return values
 
 ```go
@@ -135,26 +167,33 @@ func split(sum int) (x, y int) {
     return
 }
 ```
+
 ----
+
 ### Variables
+
 ```go
 var hot, wet, far bool
 var tool string
 var x int
 ```
+
 * with initializers
 
 ```go
 var x, y int = 1, 2
 var hot, wet, tool = true, false, "screwdriver"
 ```
+
 * short declaration
 
 ```go
 x := 3
 hot, wet, tool := true, false, "screwdriver"
 ```
+
 ----
+
 ### Loops
 
 ```go
@@ -162,6 +201,7 @@ for i := 0; i < 10; i++ {
 	sum += i
 }
 ```
+
 * optional init and post statements, while loop
 
 ```go
@@ -177,8 +217,11 @@ for sum < 1000; {
 for {
 }
 ```
+
 ----
+
 ### If statement
+
 ```go
 if x < 0 {
 	return "something"
@@ -191,7 +234,9 @@ if a < b {
     return b
 }
 ```
+
 ----
+
 ### Switch Statement
 
 
@@ -209,6 +254,7 @@ default:
 ```
 
 ----
+
 ### Defer
 
 * defers the execution of a function until the surrounding function returns
@@ -219,8 +265,23 @@ func main() {
     fmt.Println("hello")
 }
 ```
+
+```go
+...
+func main() {
+    file, _ := os.Open("README.md")
+    defer file.Close()
+    buffer := make([]byte, 1024)
+    bytesRead, _ := file.Read(buffer)
+    fmt.Printf("Content: %s\n", buffer[:bytesRead])
+}
+...
+```
+
 ----
+
 ### Structs
+
 ```go
 type Vertex struct {
     X int
@@ -233,7 +294,9 @@ func main() {
     fmt.Println(v.X)
 }
 ```
+
 ----
+
 ### Arrays
 
 ```go
@@ -243,7 +306,9 @@ a[1] = "hammer"
 
 primes := [6]int{2, 3, 5, 7, 11, 13}
 ```
+
 ----
+
 ### Slices
 
 ```go
@@ -253,6 +318,7 @@ var s []int = primes[1:4]
 ```
 
 ----
+
 ### Tour of go
 
 * for more topics checkout the tour of go
@@ -261,6 +327,7 @@ var s []int = primes[1:4]
 [go.dev/tour](https://go.dev/tour/)
 
 ----
+
 ### What we have learned
 * Advantages of go
 * How to install go
@@ -270,6 +337,7 @@ var s []int = primes[1:4]
 * `tour of go` is a good starting point
 
 ----
+
 ### Further readings
 * Source Code for all slides
   * [github.com/go-gurus/go_tour_src](https://github.com/go-gurus/go_tour_src/tree/main/hello-world)
@@ -279,4 +347,5 @@ var s []int = primes[1:4]
   * [pkg.go.dev](https://pkg.go.dev/)
 * Tour of Go
   * [go.dev/tour](https://go.dev/tour/)
+
 ---

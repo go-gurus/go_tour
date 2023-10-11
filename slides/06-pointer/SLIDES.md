@@ -7,10 +7,12 @@ In this task we want to create a program that initializes a memory intensive var
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/pointer](https://github.com/go-gurus/go_tour_src/tree/main/pointer)
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 * first create a function to init a slice of slices
 
 ```go
@@ -27,6 +29,7 @@ func init_image(image [][]int) [][]int {
 ```
 
 ----
+
 * now lets add a `main` method create a slice matrix and define the ranges, finally use the init method and print result
 
 ```go
@@ -41,7 +44,6 @@ func main() {
   image = init_image(image)
   fmt.Println(image)
 }
-
 ```
 
 ----
@@ -72,6 +74,7 @@ fmt.Println(*p) // read i through the pointer p
 ```
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 * switch completely to pointers
 
@@ -105,8 +108,8 @@ func main() {
 	pointer = init_image(pointer)
 	fmt.Println(*pointer)
 }
-
 ```
+
 ----
 
 * remove now the return value
@@ -138,7 +141,6 @@ func main() {
 	init_image(&image)
 	fmt.Println(image)
 }
-
 ```
 
 ----
