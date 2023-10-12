@@ -7,10 +7,11 @@ Let's talk about errors and error handling in Go.
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/error-handling](https://github.com/go-gurus/go_tour_src/tree/main/error-handling)
 
 ----
+
 ### Golang Error Key Principles
 
 - Errors are values
@@ -28,7 +29,9 @@ func fail() error {
     return fmt.Errorf("This did not work out.")
 }
 ```
+
 ----
+
 ### Errors don't directly affect control flow
 Check if an error occurred:
 
@@ -65,28 +68,33 @@ func resolveService() (string, error) {
 	case "staging":
 		return "https://stage.my.cloud", nil
 	case "":
-		return invalidService, noStageNameProvided
+		return "UNKNOWN_ENVIRONMENT", noStageNameProvided
 	default:
-		return invalidService, invalidStageNameProvidedError
+		return "UNKNOWN_ENVIRONMENT", invalidStageNameProvidedError
 	}
 }
-````
+```
+
 ----
+
 ##### Distinguishing via Sentinel Values
 
 ```golang
+...
 serviceUrl, err := resolveService()
+
 if err != nil {
     switch {
         case errors.Is(err, noStageNameProvided):
-            fmt.Println("No stage name provided.")
-            serviceUrl = remedyForMissingStageName()
+            fmt.Println("No stage name provided. Using default.")
+            serviceUrl = "https://default.my.cloud"
 
         case errors.Is(err, invalidStageNameProvidedError):
             panic(err)
     }
 }
-````
+```
+
 ----
 
 #### Wrapping errors
@@ -100,10 +108,13 @@ Use-Cases:
 The previous function with wrapped errors:
 
 ```golang
+var noStageNameProvided = errors.New("No Stage name provided")
+var invalidStageNameProvidedError = errors.New("Invalid stage name provided")
+
 func resolveService() (serviceUrl string, err error) {
 	stageName := os.Getenv(stageEnvironmentKey)
 
-	serviceUrl = invalidService
+	serviceUrl = "UNKNOWN_ENVIRONMENT"
 	switch stageName {
 	case "dev":
 		serviceUrl = "https://dev.fake"
@@ -117,30 +128,35 @@ func resolveService() (serviceUrl string, err error) {
 	}
 	return
 }
-````
+// ...
+```
 ----
 
 #### Wrapping errors
 Handling an invalid input
 
 ```golang
+//...
 serviceUrl, err := resolveService()
-	if err != nil {
-		switch {
-		case errors.Is(err, noStageNameProvided):
-			fmt.Println("No stage name provided.")
-			serviceUrl = remedyForMissingStageName()
 
-		case errors.Is(err, invalidStageNameProvidedError):
-			panic(err)
-		}
+if err != nil {
+	switch {
+	case errors.Is(err, noStageNameProvided):
+		fmt.Println("No stage name provided. Using default.")
+		serviceUrl = "https://default.my.cloud"
+
+	case errors.Is(err, invalidStageNameProvidedError):
+		panic(err)
 	}
-````
+}
+```
 
 Output:
-```
+
+```golang
 panic: Invalid stage name provided . Gophers! is not a known stageName
 ```
+
 ----
 
 ### What we have learned

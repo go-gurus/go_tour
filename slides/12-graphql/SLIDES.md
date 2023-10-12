@@ -8,10 +8,11 @@ it.
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/graphql](https://github.com/go-gurus/go_tour_src/tree/main/graphql)
 
 ----
+
 ### GraphQL in Go
 
 Approaches
@@ -54,10 +55,12 @@ go run github.com/99designs/gqlgen init
 ```
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 #### Write a simple beer schema
 
 ```graphql
+# graph/beer.graphqls
 type Beer {
     id: ID!
     manufacturer: String!
@@ -69,8 +72,6 @@ type Beer {
 }
 ```
 
-<small>graph/beer.graphqls</small>
-
 ----
 
 #### Write a simple beer schema
@@ -80,6 +81,7 @@ type Beer {
 Of course the GraphQL type documentation is passed through to the generated Go code
 
 ```graphql
+# graph/beer.graphqls
 """
 Beer defines key criteria of a beer
 """
@@ -97,8 +99,6 @@ type Beer {
 }
 ```
 
-<small>graph/beer.graphqls</small>
-
 ----
 
 #### Provide a query specification
@@ -106,12 +106,11 @@ type Beer {
 To expose data to clients, we need a Query specification.
 
 ```graphql
+# graph/schema.graphqls
 type Query {
     beers: [Beer!]!
 }
 ```
-
-<small>graph/schema.graphqls</small>
 
 ----
 
@@ -126,36 +125,34 @@ go run github.com/99designs/gqlgen generate
 #### Lets stick with a fake data source for now
 
 ```golang
+// graph/resolver.go
 type Resolver struct {
     BeerResolver func () []*model.Beer
 }
 ```
 
-<small>graph/resolver.go</small>
-
 ```golang
+// service/BeerService.go
 func GetBeers() []*model.Beer {
     return funnyFakeBeerList
 }
 ```
-
-<small>service/BeerService.go</small>
-
 
 ----
 
 #### Implement resolver
 
 ```go
+// graph/schema.resolvers.go
+
 // Beers is the resolver for the beers field.
 func (r *queryResolver) Beers(ctx context.Context) ([]*model.Beer, error) {
     return r.BeerResolver(), nil
 }
 ```
 
-<small>graph/schema.resolvers.go</small>
-
 ----
+
 #### How to issue a GraphQL Query
 
 #### Web Interface
@@ -218,11 +215,17 @@ query{
         }, ///more
 ```
 ----
+
 <big>Job done.</big>
+
 ----
+
 <big>Wait..</big>
+
 ----
+
 <big>Haven't we mentioned filtering before?</big>
+
 ----
 
 #### Provide a query with a filter
@@ -230,12 +233,12 @@ query{
 1. Update Query schema
 
 ```graphql
+# graph/schema.graphqls
+
 type Query {
     beers(minPercentage: Float = 0.0) : [Beer!]!
 }
 ```
-
-<small>graph/schema.graphqls</small>
 
 2. Re-Run code generator
 
@@ -250,6 +253,8 @@ go run github.com/99designs/gqlgen generate
 3. Implement resolver
 
 ```golang
+// graph/schema.resolvers.go
+
 func (r *queryResolver) Beers(_ context.Context, 
 	minPercentage *float64) ([]*model.Beer, error) {
     if *minPercentage < 0.0 {
@@ -264,8 +269,6 @@ func (r *queryResolver) Beers(_ context.Context,
     return beersFiltered, nil
 }
 ```
-
-<small>graph/schema.resolvers.go</small>
 
 ----
 
@@ -306,4 +309,5 @@ query{
 
 * [https://gqlgen.com/getting-started/(https://gqlgen.com/getting-started/)
 * [https://graphql.org/](https://graphql.org/)
+
 ---

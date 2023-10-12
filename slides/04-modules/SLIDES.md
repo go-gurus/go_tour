@@ -6,12 +6,14 @@ In this task we want to create different modules in GO. Every single module uses
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/modules](https://github.com/go-gurus/go_tour_src/tree/main/modules)
 
 ----
 <!-- .slide: data-background="img/MODULES/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ### logrus
 
@@ -65,6 +67,7 @@ INFO[0000] Hello from logrus     logger=logrus
 ```
 
 ----
+
 ### zap
 
 * quite a higher performance compared to logrus or other logging modules
@@ -72,6 +75,7 @@ INFO[0000] Hello from logrus     logger=logrus
 Now lets write a new file and import zap.
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ```golang
 //main.go
@@ -92,7 +96,9 @@ func main() {
 	)
 }
 ```
+
 ----
+
 * init module, install zap and run `main.go`
 
 ```bash
@@ -107,6 +113,7 @@ $ go run main.go
 * `Dockerfile` for modules
 
 ```Dockerfile
+# Dockerfile modules
 # build stage
 FROM golang:1.17.6-alpine AS build
 
@@ -152,6 +159,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /bin/app
 ```
 
 ----
+
 * build the image
 
 ```bash
@@ -174,6 +182,7 @@ $ docker run --rm -it --name hello-zap-con hello-zap-image
 Now lets write a new file and import golog.
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ```golang
 //main.go
@@ -192,7 +201,9 @@ func main() {
     but it will also print the log message if logger's Level is >=FatalLevel`)
 }
 ```
+
 ----
+
 ```bash
 $ go mod init grohm.io/hello-golog/v2
 $ go get -u github.com/kataras/golog
@@ -206,7 +217,9 @@ $ go run main.go
     but it will also print the log message if logger's Level is >=FatalLevel
 exit status 1
 ```
+
 ----
+
 ### Vendoring
 * What if a go module repo will be renamed, deleted or moved?
 * Go programs will only compile if all module dependencies will stay accessible in the future.
@@ -216,9 +229,10 @@ exit status 1
 In this task, we want to explicitly add all dependencies to one of our modules to bypass external dependencies in the build process. We use the vendoring feature of go for this.
 
 ----
-
 <!-- .slide: data-background="img/MODULES/02.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ```golang
 //main.go
@@ -236,7 +250,9 @@ func main() {
 	)
 }
 ```
+
 ----
+
 * generate vendor folder
 
 ```bash
@@ -244,7 +260,9 @@ $ go mod init grohm.io/hello-zap-vendor
 $ go get go.uber.org/zap
 $ go mod vendor
 ```
+
 ----
+
 * all dependencies are added
 
 ```bash
@@ -260,13 +278,17 @@ $ go mod vendor
     └── modules.txt
 
 ```
+
 ----
+
 ### What we have learned
 * How to setup modules in go
 * How to write Dockerfiles for go modules
 * How to use logrus, zap and golog
 * How to vendor all dependencies
+
 ----
+
 ### Further readings
 * Go Modules
   * [go.dev/blog/using-go-modules](https://go.dev/blog/using-go-modules)

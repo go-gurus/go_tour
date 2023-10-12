@@ -7,12 +7,14 @@ The loadbalancer will spawn parallel go routines in the background, each of thes
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/parallel](https://github.com/go-gurus/go_tour_src/tree/main/parallel)
 
 ----
 <!-- .slide: data-background="img/PARALLEL/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00-small.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ### quick look on channels and go routines
 
@@ -39,6 +41,7 @@ func main() {
 42
 
 ```
+
 ----
 
 What is this program doing?
@@ -49,13 +52,15 @@ What is this program doing?
 * print the value
 
 ----
-
 <!-- .slide: data-background="img/PARALLEL/02.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
 ----
 
 ### simple loadbalancer using channels and go routines
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00-small.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 * first start with a function that sends random values to our channel
 * the function will sleep for a short time frame
 * infinite loop
@@ -101,6 +106,7 @@ func processChannel(id int, input chan int, output chan string) {
   }
 }
 ```
+
 ----
 
 * add load balancer
@@ -110,6 +116,8 @@ func processChannel(id int, input chan int, output chan string) {
 * get and print values from output channel in an endless loop
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 ```golang
 // main.go
 // ...
@@ -135,7 +143,9 @@ func main() {
     }
 }
 ```
+
 ----
+
 * lets execute the load balancer (10 worker)
 ```shell
 ➜ go run main.go
@@ -159,6 +169,7 @@ worker: 8, input: 766, result: 766000
 ### Refactoring
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00-small.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 * first lets add a loop, also change order of getting and sending data
 
@@ -189,7 +200,6 @@ func main() {
   defer close(output)
   // ...
 }
-
 ```
 
 ----
@@ -205,7 +215,6 @@ func sendDataToChannel(input chan int) {
     time.Sleep(time.Duration(value))
   }
 }
-
 ```
 
 ----
@@ -227,7 +236,6 @@ func processChannel(id int, input chan int, output chan string) {
     time.Sleep(time.Duration(result))
   }
 }
-
 ```
 
 ----
@@ -295,7 +303,6 @@ func main() {
 
 ----
 
-
 ### What we have learned
 * How to use channels
 * How to close channels
@@ -304,6 +311,7 @@ func main() {
 * How to use select statement to wait on channel results
 * How to use endless loops
 * How to build a simple loadbalancer
+
 ----
 
 ### Further readings

@@ -27,7 +27,7 @@ watch -n5 ./build.sh
 $ docker run --rm -p 8080:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:latest /slides --theme theme/cc.css
 ```
 
-* or build and run a container
+* or build image and run a container
 
 ```bash
 $ docker build --platform linux/amd64 --tag grohmio/go-tour:latest .

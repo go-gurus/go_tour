@@ -1,4 +1,5 @@
 <!-- .slide: data-background="img/PIPELINES/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 ----
 
 ## pipelines
@@ -7,11 +8,12 @@ We want to build a simple pipeline for one of our go services.
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/pipelines](https://github.com/go-gurus/go_tour_src/tree/main/pipelines)
 * see it action here [gitlab.com/grohmio/go-tour-pipelines-showcase](https://gitlab.com/grohmio/go-tour-pipelines-showcase)
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ### GitLab
 
@@ -42,8 +44,8 @@ func IsPrime(value int) (result bool) {
 	}
 	return value > 1
 }
-
 ```
+
 ----
 
 * next add testcases, add file `main_test.go`
@@ -91,7 +93,6 @@ func TestPrimeCheckerTableDriven(t *testing.T) {
 		})
 	}
 }
-
 ```
 
 ----
@@ -245,6 +246,7 @@ release_job:
     tag_name: '$CI_PIPELINE_IID'
     ref: '$CI_COMMIT_SHA'
 ```
+
 ----
 
 * lets add stages and avoid running on tag pipelines
@@ -266,6 +268,7 @@ workflow:
     - when: always
 # ...
 ```
+
 ----
 
 * add changes, commit and push
@@ -310,4 +313,5 @@ workflow:
     * [docs.gitlab.com/ee/ci/pipelines](https://docs.gitlab.com/ee/ci/pipelines/)
 * Golang GitLab Template
     * [gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Go.gitlab-ci.yml](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Go.gitlab-ci.yml)
+
 ---

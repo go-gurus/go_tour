@@ -9,10 +9,12 @@ If you need performance and good productivity, you will love Gin.
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/gin](https://github.com/go-gurus/go_tour_src/tree/main/gin)
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 ### Getting started
 
 * load gin modules
@@ -64,23 +66,31 @@ $ go run main.go
 ```
 
 * fix
+
 ```bash
 $ go get -u golang.org/x/sys
 ```
 
 ----
 
+* init and run project
+
 ```bash
 $ go mod init grohm.io/gin-ping-pong
 $ go run main.go
 ```
+
 ----
+
 ### A real world API Service
 The Beer Fridge
 
 - Serve temperature sensor values
 - Provide information regarding the content
+
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 ### A simple read function
 in a functional style
 
@@ -93,7 +103,9 @@ func SetupApi(r *gin.Engine, temperatureProvider func() float32) {
     }
 }
 ```
+
 ----
+
 ### A simple read function
 in a functional style
 
@@ -111,6 +123,7 @@ func composeGetTemperatureHandler(
     }
 }
 ```
+
 ----
 
 ### A simple read function
@@ -130,7 +143,9 @@ Content-Length: 24
 "temperature": 5.813981
 }
 ```
+
 ----
+
 ### Evaluating Query Parameters
 
 ```go
@@ -147,7 +162,9 @@ applyQueryFilter := func(context *gin.Context, beers []Beer) []Beer {
 		return beers
 	}
 ```
+
 ----
+
 ### Evaluating Query Parameters
 Filter method in Go 1.18 with generics
 ```go
@@ -157,7 +174,9 @@ if context.ShouldBindQuery(&query) == nil {
   })
 }
 ```
+
 ----
+
 ### Mapping Result
 i.E. adding HATEOAS
 
@@ -191,4 +210,5 @@ mapHATEOAS := func(beers []Beer) []HAETEOASResource[Beer] {
 ### Further readings
 * gin
   * [github.com/gin-gonic/gin](https://github.com/gin-gonic/gin)
+
 ---

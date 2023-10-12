@@ -4,14 +4,17 @@
 ## Documentation
 In this task, we want to build and serve some golang documentation.
 https://github.com/go-gurus/go_tour_src/tree/main/documentation
+
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/documentation](https://github.com/go-gurus/go_tour_src/tree/main/documentation)
 
 ----
 <!-- .slide: data-background="img/DOCUMENTATION/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ### Create a module
 
@@ -37,9 +40,11 @@ func main() {
 
 ----
 
-* lets build a new folder and file `prime_checker/prime_checker.go`
+* lets build a new sub folder and go file
 
 ```go
+// prime_checker/prime_checker.go -- <REMOVE THIS COMMENT>
+
 // Package prime_checker provides a prime number check function.
 package prime_checker
 
@@ -78,9 +83,16 @@ $ ~/go/bin/godoc -http :6060
 
 ----
 
-* now lets add an other file `prime_checker/prime_checker_example_test.go`
+you should see something like this
+![documentation](img/DOCUMENTATION/02.png)<!-- .element height="500px" -->
+
+----
+
+* now lets add a test file
 
 ```go
+// prime_checker/prime_checker_example_test.go -- <REMOVE THIS COMMENT>
+
 package prime_checker
 
 import "fmt"
@@ -110,10 +122,16 @@ $ ~/go/bin/godoc -http :6060
 
 ----
 
+you should see something like this
+![documentation](img/DOCUMENTATION/03.png)<!-- .element height="500px" -->
+
+----
+
 ### What we have learned
 * How to write documentation for golang
 * How to serve documentation for golang
 * How to add example testcases into the documentation
+
 ----
 
 ### Further readings

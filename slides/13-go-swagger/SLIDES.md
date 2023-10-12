@@ -8,12 +8,14 @@ This service using the interface first approach with `go-swagger` code generatio
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/go-swagger](https://github.com/go-gurus/go_tour_src/tree/main/go-swagger)
 
 ----
 <!-- .slide: data-background="img/GO_SWAGGER/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ### get go-swagger
 * install `go-swagger` via docker on mac and linux
@@ -38,6 +40,7 @@ $ swagger version
 version: v0.29.0
 commit: 53696caa1e8a4e5b483c87895d54eda202beb3b0
 ```
+
 ----
 
 * init a new project
@@ -71,6 +74,7 @@ schemes:
 - http
 swagger: "2.0"
 ```
+
 ----
 
 * validate the interface file
@@ -85,6 +89,7 @@ The swagger spec at "swagger.yml" showed up some valid but possibly unwanted con
 2022/07/01 19:57:02 - WARNING: spec has no valid path defined
 
 ```
+
 ----
 
 * lets adapt the interface to our needs
@@ -154,6 +159,7 @@ paths:
           schema:
             $ref: "#/definitions/temperature"
 ```
+
 ----
 
 * init module, generate service and get modules
@@ -163,6 +169,7 @@ paths:
 ➜ swagger generate server -A beer-fridge -f ./swagger.yml
 ➜ go get -u -f ./...
 ```
+
 ----
 
 * check generated code
@@ -214,6 +221,7 @@ paths:
 ```html
 "operation beers.GetBeers has not yet been implemented"
 ```
+
 ----
 
 * build the server binary
@@ -235,6 +243,7 @@ paths:
 ```html
 "operation beers.GetBeers has not yet been implemented"
 ```
+
 ----
 
 * add `error` definition
@@ -277,6 +286,7 @@ paths:
           schema:
             $ref: "#/definitions/error" 
 ```
+
 ----
 
 * enlarge endpoint `/beers`, delete a beer
@@ -297,6 +307,7 @@ paths:
           schema:
             $ref: "#/definitions/error"
 ```
+
 ----
 
 * final file should look like this
@@ -415,6 +426,7 @@ paths:
           schema:
             $ref: "#/definitions/temperature"
 ```
+
 ----
 
 * build the server again
@@ -445,6 +457,7 @@ func newBeerID() int64 {
 	return atomic.AddInt64(&lastID, 1)
 }
 ```
+
 ----
 
 * add a beer to list
@@ -467,6 +480,7 @@ func AddBeer(beer *models.Beer) error {
 	return nil
 }
 ```
+
 ----
 
 * drink and remove a beer from list
@@ -487,6 +501,7 @@ func DeleteBeer(id int64) error {
 	return nil
 }
 ```
+
 ----
 
 * show all beer's on list
@@ -505,6 +520,7 @@ func AllBeers(limit int32) (result []*models.Beer) {
 	return
 }
 ```
+
 ----
 
 * now lets integrate the beer container into the api, add following lines
@@ -571,6 +587,7 @@ func configureAPI(api *operations.BeerFridgeAPI) http.Handler {
 	})
 }
 ```
+
 ----
 
 * rebuild and start the server
@@ -601,7 +618,9 @@ curl -i localhost:8080/beers
 ```shell
 curl -i localhost:8080/temperature
 ```
+
 ----
+
 * delete a beer
 
 ```shell

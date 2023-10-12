@@ -7,7 +7,7 @@ Let's build a simple CLI tool and learn something about parsing commandlines, fi
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/website-scoring](https://github.com/go-gurus/go_tour_src/tree/main/website-scoring)
 
 ----
@@ -18,6 +18,7 @@ Compute a credibility score for a website, taking into account
 
 - Links. Affiliate Links might mean the website is bad
 - Word Count. Much text might mean that the site has real content
+
 ----
 
 ### Strategy
@@ -28,8 +29,8 @@ Compute a credibility score for a website, taking into account
 - Let the features compute an individual score
 - Combine scores into one total score
 
-
 ----
+
 ### Tooling
 
 We won't reinvent the wheel, so we will use:
@@ -38,50 +39,60 @@ We won't reinvent the wheel, so we will use:
 - [lo](https://github.com/samber/lo") for Java Streams/C# LINQ like expressions
 
 ----
+
 ### Types
 #### Features
 
 A feature computes a score from a document.
 ```golang
+// pkg/scoring/scoring.go
+
 type Feature func(document *goquery.Document) float64
 ```
-<small>pkg/scoring/scoring.go</small>
 
 A set of features:
 ```golang
+//pkg/scoring/scoring.go
+
 type FeatureSet []Feature
 ```
-<small>pkg/scoring/scoring.go</small>
+
 ----
+
 ### Types
 #### Feature Registry
 
 A feature registry contains a set of registrations
 ```golang
+// pkg/scoring/scoringFeatureRegistry.go
+
 type FeatureRegistry struct {
     registrations []FeatureRegistration
 }
 ```
-<small>pkg/scoring/scoringFeatureRegistry.go</small>
 
 ----
 
 A registration consists of:
 ```golang
+// pkg/scoring/scoringFeatureRegistry.go
+
 type FeatureRegistration struct {
     Feature
     Title string
     Tags  []string
 }
 ```
-<small>pkg/scoring/scoringFeatureRegistry.go</small>
 
 ----
+
 ### Feature Registry
 #### Registering new Features
 Lets start with describing our expectations in a test
 
 ```golang
+// pkg/scoring/scoringFeatureRegistry_test.go
+
 func TestRegisterScoringFeature(t *testing.T) {
     fakeFeature := func(_ *goquery.Document) float64 {
         return 1
@@ -100,12 +111,15 @@ func TestRegisterScoringFeature(t *testing.T) {
         assert.Len(t, features, 1)
     })
 ```
-<small>pkg/scoring/scoringFeatureRegistry_test.go</small>
 
 ----
+
 ### Feature Registry
 #### Registering new Features
-```
+
+```golang
+//pkg/scoring/scoringFeatureRegistry.go
+
 func (f *FeatureRegistry) Register(registrations ...FeatureRegistration) {
 	for _, registration := range registrations {
 		f.registrations = append(f.registrations, registration)
@@ -116,14 +130,15 @@ func (f *FeatureRegistry) GetFeatures() FeatureSet {
 	return f.registrations
 }
 ```
-<small>pkg/scoring/scoringFeatureRegistry.go</small>
-
 
 ----
+
 ### Feature Registry
 #### Filter support
 
-```
+```golang
+// pkg/scoring/scoringFeatureRegistry_test.go
+
 func TestRegisterScoringFeature(t *testing.T) {
 	// ...
 
@@ -154,13 +169,17 @@ func TestRegisterScoringFeature(t *testing.T) {
 	})
 }
 ```
-<small>pkg/scoring/scoringFeatureRegistry_test.go</small>
 
 ----
+
 ### Feature Registry
 #### Filter support
+
 Lets use *lo* to filter our subscriptions.
-```
+
+```golang
+// pkg/scoring/scoringFeatureRegistry.go
+
 func (f *FeatureRegistry) GetFeatures(includeTags ...string) FeatureSet {
 	filteredRegistrations := lo.Filter[FeatureRegistration](f.registrations, 
 	    func(it FeatureRegistration, _ int) bool {
@@ -173,25 +192,32 @@ func (f *FeatureRegistry) GetFeatures(includeTags ...string) FeatureSet {
 	})
 }
 ```
-<small>pkg/scoring/scoringFeatureRegistry.go</small>
+
 ----
+
 ### Features
 #### Word Count
+
 The result datatype
-```
+
+```golang
+// pkg/scoring/wordCount.go
+
 type WordFrequencyResult struct {
 	TotalWords   int            
 	CountedWords int            
 	WordCounts   map[string]int 
 }
 ```
-<small>pkg/scoring/wordCount.go</small>
 
 ----
+
 ### Features
 #### Word Count
 
-```
+```golang
+// pkg/scoring/wordCount.go
+
 func WordCount(doc *goquery.Document) WordFrequencyResult {
 	result := WordFrequencyResult{
 		WordCounts: make(map[string]int),
@@ -215,12 +241,15 @@ func WordCount(doc *goquery.Document) WordFrequencyResult {
 	return result
 }
 ```
-<small>The actual Word Count in pkg/scoring/wordCount.go</small>
+
 ----
+
 ### Putting it all together
 #### Registering the Word Counter
 
-```
+```golang
+// pkg/scoring/wordCount.go
+
 func wordCountRegistration() FeatureRegistration {
 	return FeatureRegistration{
 		Feature: ScoreWrapper[WordFrequencyResult](WordCount),
@@ -229,21 +258,24 @@ func wordCountRegistration() FeatureRegistration {
 	}
 }
 ```
-<small>pkg/scoring/wordCount.go</small>
 
-```
+```golang
+// pkg/scoring/scoringFeatureRegistry.go
+
 func NewDefaultRegistry() (r FeatureRegistry) {
 	r.Register(affiliateLinkCountRegistration())
 	return
 }
 ```
-<small>pkg/scoring/scoringFeatureRegistry.go</small>
 
 ----
+
 ### Putting it all together
 #### The score wrapper
 
-```
+```golang
+// pkg/scoring/scoreWrapper.go
+
 // Scoreable constraints to types providing a method to be scored
 type Scoreable interface {
 	Score() float64
@@ -258,12 +290,14 @@ func ScoreWrapper[T Scoreable](scoreFunction func(doc *goquery.Document) T) Feat
 }
 ```
 
-<small>pkg/scoring/scoreWrapper.go</small>
 ----
+
 ### Putting it all together
 #### Commandline Interface
 
-```
+```golang
+// cmd/score/score.go
+
 func main() {
 	var targetUrl = flag.String("url", "", "URL of the site to be parsed")
 	flag.Parse()
@@ -274,12 +308,15 @@ func main() {
 	fmt.Printf("Website=%s Score=%f", *targetUrl, score)
 }
 ```
-<small>cmd/score/score.go</small>
+
 ----
+
 ### Putting it all together
 #### Feature Runner and Combiner
 
-```
+```golang
+// pkg/scoring/scoring.go
+
 func computeScore(features FeatureSet, document *goquery.Document) (score float64) {
 	for _, feature := range features {
 		score += feature(document)
@@ -294,22 +331,27 @@ func Score(url string, featureTags ...string) (score float64) {
 	return computeScore(features, document)
 }
 ```
-<small>pkg/scoring/scoring.go</small>
+
 ----
+
 ### Run it
 
-```
+```bash
 $ website_score --url https://grohm.io
 Website=https://grohm.io Score=244.200000
 ```
 
 ----
+
 ## Lets add a second feature!
+
 ----
+
 ### Affiliate Link Count
 #### Type definition
 
-```
+```golang
+// pkg/scoring/affiliateLinkCount.go
 type LinkCountResult struct {
 	TotalLinks           int `json:"TotalLinks"`
 	LocalLinks           int `json:"LocalLinks"`
@@ -322,14 +364,15 @@ func (l LinkCountResult) Score() float64 {
 	return float64(l.TotalLinks + l.LocalLinks - l.AffiliateLinks*2 - l.MaskedAffiliateLinks*4 - l.ShortendedUrls)
 }
 ```
-<small>pkg/scoring/affiliateLinkCount.go</small>
-----
 
+----
 
 ### Affiliate Link Count
 #### The actual link count
 
-```
+```golang
+// pkg/scoring/affiliateLinkCount.go
+
 var affiliateLinksExpression, _ = regexp.Compile("(\\.amazon\\.)")
 var maskedAffiliateLinksExpression, _ = regexp.Compile("(amzn\\.to)")
 var shortenedUrlExpression, _ = regexp.Compile("(bit\\.ly|tinyurl\\.com)")
@@ -364,13 +407,15 @@ func AffiliateLinkCount(doc *goquery.Document) LinkCountResult {
 	return result
 }
 ```
-<small>pkg/scoring/affiliateLinkCount.go</small>
+
 ----
 
 ### Affiliate Link Count
 #### The registration
 
-```
+```golang
+// pkg/scoring/affiliateLinkCount.go
+
 func affiliateLinkCountRegistration() FeatureRegistration {
 	return FeatureRegistration{
 		Feature: ScoreWrapper[LinkCountResult](AffiliateLinkCount),
@@ -379,15 +424,16 @@ func affiliateLinkCountRegistration() FeatureRegistration {
 	}
 }
 ```
-<small>pkg/scoring/affiliateLinkCount.go</small>
 
-```
+```golang
+// pkg/scoring/scoringFeatureRegistry.go
+
 func NewDefaultRegistry() (r FeatureRegistry) {
 	r.Register(affiliateLinkCountRegistration(), wordCountRegistration())
 	return
 }
 ```
-<small>pkg/scoring/scoringFeatureRegistry.go</small>
+
 ----
 
 ### What we have learned
@@ -396,16 +442,17 @@ func NewDefaultRegistry() (r FeatureRegistry) {
 - Functions can be values
 - Functions can return functions
 - The ... operator allows readable and flexible argument lists and substitutes optional arguments
+
 ----
+
 # Bonus
 
-Implement a CLI parameter to specify the feature filter query 
+Implement a CLI parameter to specify the feature filter query
+
 ----
 
 ### Further readings
 * [Programming with go / first class functions](https://livebook.manning.com/book/get-programming-with-go/chapter-14/31)
 * [variadic function parameters](https://go.dev/ref/spec#Passing_arguments_to_..._parameters)
-
-
 
 ---

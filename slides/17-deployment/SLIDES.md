@@ -8,7 +8,7 @@ We use `fly.io` as a simple solution.
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/deployment](https://github.com/go-gurus/go_tour_src/tree/main/deployment)
 
 ----
@@ -25,10 +25,14 @@ We use `fly.io` as a simple solution.
 ![fly.io](img/DEPLOYMENT/02.png)<!-- .element height="400px" -->
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 * create an account
 * credit card is needed, but its free
 ![fly.io](img/DEPLOYMENT/03.png)<!-- .element height="400px" -->
+
 ----
+
 ### flyctl
 * flyctl is the fly.io command line interface
 * install on MacOS
@@ -46,7 +50,9 @@ curl -L https://fly.io/install.sh | sh
 ```bash
 iwr https://fly.io/install.ps1 -useb | iex
 ```
+
 ----
+
 * sign up
 
 ```bash
@@ -58,7 +64,9 @@ flyctl auth signup
 ```bash
 flyctl auth login
 ```
+
 ----
+
 * add a `main.go` file
 
 ```go
@@ -96,6 +104,7 @@ func main() {
     log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 ```
+
 ----
 
 * add file `templates/index.html.tmpl`
@@ -115,6 +124,7 @@ func main() {
 ```
 
 ----
+
 * init module
 
 ```bash
@@ -122,6 +132,7 @@ go mod init grohm.io/flyio
 ```
 
 ----
+
 * launch the app
 
 ```bash
@@ -135,6 +146,7 @@ Using the following build configuration:
 ? Choose an app name (leave blank to generate one): flyio-grohmio
 
 ```
+
 ----
 
 * new `fly.toml` is generated
@@ -185,6 +197,7 @@ processes = []
     timeout = "2s"
 
 ```
+
 ----
 
 * deploy the app
@@ -192,6 +205,7 @@ processes = []
 ```bash
 $ flyctl deploy
 ```
+
 ----
 
 * look at your apps in [fly.io/dashboard](https://fly.io/dashboard)
@@ -199,6 +213,7 @@ $ flyctl deploy
 ![fly.io](img/DEPLOYMENT/04.png)<!-- .element height="400px" -->
 
 ----
+
 * look at your specific app
 
 ![fly.io](img/DEPLOYMENT/05.png)<!-- .element height="400px" -->
@@ -208,12 +223,12 @@ $ flyctl deploy
 * check the link
 
 ![fly.io](img/DEPLOYMENT/06.png)<!-- .element height="400px" -->
+
 ----
 
 ### What we have learned
 * Good and easy way to deploy go apps, fly.io.
 * How to deploy go apps with `flyctl`
-
 
 ----
 
@@ -223,4 +238,5 @@ $ flyctl deploy
     * [fly.io/docs/hands-on/install-flyctl](https://fly.io/docs/hands-on/install-flyctl/)
     * [fly.io/docs/languages-and-frameworks/golang/](https://fly.io/docs/languages-and-frameworks/golang/)
     * [fly.io/dashboard](https://fly.io/dashboard)
+
 ---

@@ -7,15 +7,17 @@ The service is configured via environment variable `LOGGER=[logrus|zap|golog]`
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/interfaces](https://github.com/go-gurus/go_tour_src/tree/main/interfaces)
 
 ----
 <!-- .slide: data-background="img/INTERFACES/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
-----
 
-<!-- .slide: data-background="img/INTERFACES/02.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 ----
+<!-- .slide: data-background="img/INTERFACES/02.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
+----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ### Create an interface
 
@@ -50,6 +52,7 @@ main.go
 * notice: the struct `LogrusStruct` has the two methods that are needed to fulfill the interface `logInterface`
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 ```golang
 // logrus_facade/logrus_facade.go
@@ -183,6 +186,7 @@ $ LOGGER=zap go run main.go
 {"level":"error","ts":1644693744.2508721,"caller":"zap_facade/zap_facade.go:19","msg":"i really dont care which logging tool is used to put this error (zap)",
 "stacktrace":"grohm.io/interfaces/v2/zap_facade.ZapStruct.Error\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/zap_facade/zap_facade.go:19\nmain.doSomething\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/main.go:35\nmain.main\n\t/Users/grohmio/repos/cc/gitlab/golang_workshop/examples/05_interfaces/main.go:39\nruntime.main\n\t/usr/local/opt/go/libexec/src/runtime/proc.go:255"}
 ```
+
 ----
 
 ### Interface Mocking
@@ -190,9 +194,10 @@ $ LOGGER=zap go run main.go
 In this task we want to inject a mock to be able to test function calls on the interface.
 
 ----
-
 <!-- .slide: data-background="img/INTERFACES/03.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 * install gomock
 
@@ -232,6 +237,7 @@ func (m *MocklogInterface) Error(arg0 string) {
 }
 //..
 ```
+
 ----
 
 * now we need also to mock the function `func resolveLogger() logInterface`, change
@@ -295,6 +301,7 @@ ok      grohm.io/interfaces/v2    1.444s
 * How to use subpackages
 * How to mock interfaces
 * How to mock functions
+
 ----
 
 ### Further readings

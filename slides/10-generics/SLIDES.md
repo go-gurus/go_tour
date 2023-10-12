@@ -8,10 +8,12 @@ Then we will optimize this program with generics and refactor the functions to s
 
 ----
 
-### Complete Source Code
+### Too fast? Find source code here:
 * [github.com/go-gurus/go_tour_src/tree/main/generics](https://github.com/go-gurus/go_tour_src/tree/main/generics)
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
 * first create a function that returns the sum of an integer map
 
 ```go
@@ -85,6 +87,7 @@ Non-Generic Sums: 46 and 62.97
 Now lets switch to a generic function.
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 * add a function that can handle multiple types
 
@@ -118,6 +121,7 @@ var sum ValueType
 ```
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 * lets create a `main` function again
 
@@ -156,6 +160,7 @@ Generic Sums: 46 and 62.97
 Now lets add some minor improvements to the code.
 
 ----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 
 * lets add a type constraint
 
@@ -226,6 +231,7 @@ Generic Sums with Constraint: 46 and 62.97
 * have a look on generic library
 
 ----
+
 ### Further readings
 * generics tutorial
   * [go.dev/doc/tutorial/generics](https://go.dev/doc/tutorial/generics)
