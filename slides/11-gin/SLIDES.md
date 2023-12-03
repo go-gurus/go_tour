@@ -210,5 +210,12 @@ mapHATEOAS := func(beers []Beer) []HAETEOASResource[Beer] {
 ### Further readings
 * gin
   * [github.com/gin-gonic/gin](https://github.com/gin-gonic/gin)
+* gin doku
+  * [gin-gonic.com/docs](https://gin-gonic.com/docs/)
+  * [gin-gonic.com/docs/quickstart](https://gin-gonic.com/docs/quickstart/)
+* gin examples
+  * [gin-gonic.com/docs/examples/](https://gin-gonic.com/docs/examples/)
+  * [github.com/gin-gonic/examples](https://github.com/gin-gonic/examples)
+
 
 ---
