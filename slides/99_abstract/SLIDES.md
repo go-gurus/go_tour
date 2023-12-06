@@ -52,7 +52,12 @@
 ----
 
 ### The End
-* Feel free to stay in contact with us.
-* Feel free to give us feedback.
+
+* stay in contact [go-gurus.slack.com](https://go-gurus.slack.com)
+* participate [github.com/go-gurus](https://github.com/go-gurus)
+* see us soon on [youtube.com/@go-gurus](https://www.youtube.com/@go-gurus)
+
+
+![youtube](img/WHATS_NEW/01.png)<!-- .element height="300px" -->
 
 ---
