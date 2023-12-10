@@ -172,6 +172,144 @@ go tool cover -html=coverage.out main.go main_test.go
 
 ----
 
+### Fake Test Data
+
+* now lets fake some test data for our tests
+
+----
+
+### Too fast? Find source code here:
+* [github.com/go-gurus/go_tour_src/tree/main/test-faker](https://github.com/go-gurus/go_tour_src/tree/main/test-faker)
+
+----
+<!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+
+* generate a new folder
+* init a new module
+
+```bash
+go mod init grohm.io/test-data-faker
+```
+
+* add the package to the module
+
+```bash
+go get github.com/brianvoe/gofakeit/v6
+```
+
+----
+
+* add a new `main.go` file
+
+```go
+// main.go
+package main
+
+import (
+	"fmt"
+	"github.com/brianvoe/gofakeit/v6"
+)
+
+func main() {
+	fmt.Println(gofakeit.Name())
+	fmt.Println(gofakeit.Email())
+	fmt.Println(gofakeit.Phone())
+	fmt.Println(gofakeit.BS())
+	fmt.Println(gofakeit.BeerName())
+	fmt.Println(gofakeit.Color())
+	fmt.Println(gofakeit.Company())
+	fmt.Println(gofakeit.HackerPhrase())
+	fmt.Println(gofakeit.JobTitle())
+	fmt.Println(gofakeit.CurrencyShort())
+}
+```
+----
+
+* lets run the code
+
+```bash
+go run main.go
+```
+
+```bash
+Jessie Schowalter
+billieruecker@dickens.info
+8837610879
+world-class
+Double Bastard Ale
+DarkGoldenRod
+SlashDB
+I'll compile the online USB transmitter, that should format the IB feed!
+Executive
+KRW
+```
+----
+
+* now lets fake some credit card data
+
+```go
+// main.go
+// ...
+func main(){
+	//...
+
+	fmt.Println(gofakeit.CreditCardType())
+	fmt.Println(gofakeit.CreditCardNumber(nil))
+}
+```
+
+----
+
+* refactor creditcard example
+
+```go
+// main.go
+// ...
+func main(){
+	//...
+
+	gofakeit.Seed(0)
+	ccInfo := gofakeit.CreditCard()
+	fmt.Println(ccInfo.Type)
+	fmt.Println(ccInfo.Number)
+	fmt.Println(ccInfo.Exp)
+	fmt.Println(ccInfo.Cvv)
+}
+```
+----
+
+* lets run the code again
+
+```bash
+go run main.go
+```
+
+```bash
+Shea Schinner
+briannelegros@kutch.com
+7854232973
+rich
+90 Minute IPA
+SkyBlue
+Farmers
+Use the solid state HDD card, then you can transmit the open-source matrix!
+Strategist
+CVE
+Hipercard
+379037107654647
+JCB
+6443852913878647
+06/28
+445
+```
+
+----
+
+* see the full list of fake data 
+  * [github.com/brianvoe/gofakeit#functions](https://github.com/brianvoe/gofakeit#functions)
+
+----
+
 ### What we have learned
 * How to use the Go testing package
 * How to run tests
@@ -179,5 +317,18 @@ go tool cover -html=coverage.out main.go main_test.go
 * Basic loops and branching
 * How to show code coverage
 * How to create coverage reports
+* How to fake test data
+----
+
+### Further readings
+* testing
+  * [pkg.go.dev/testing](https://pkg.go.dev/testing)
+  * [go.dev/doc/tutorial/add-a-test](https://go.dev/doc/tutorial/add-a-test)
+* loops
+  * [go.dev/tour/flowcontrol/1](https://go.dev/tour/flowcontrol/1)
+  * [geeksforgeeks.org/loops-in-go-language/](https://www.geeksforgeeks.org/loops-in-go-language/)
+* gofakeit
+  * [github.com/brianvoe/gofakeit](https://github.com/brianvoe)
+  * [github.com/brianvoe/gofakeit#functions](https://github.com/brianvoe/gofakeit#functions)
 
 ---
