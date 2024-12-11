@@ -1,7 +1,7 @@
-<!-- .slide: data-background="img/PRIME_CHECKER/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/TESTING/00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
 ----
 
-## Prime checker
+## Testing
 In this task, you will learn about writing tests in Go by developing a prime tester in TDD-style.
 
 ----
@@ -10,7 +10,7 @@ In this task, you will learn about writing tests in Go by developing a prime tes
 * [github.com/go-gurus/go_tour_src/tree/main/prime-checker](https://github.com/go-gurus/go_tour_src/tree/main/prime-checker)
 
 ----
-<!-- .slide: data-background="img/PRIME_CHECKER/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
+<!-- .slide: data-background="img/TESTING/01.jpg" data-background-size="60%" data-background-position="50% 50%" -->
 
 ----
 <!-- .slide: data-background="img/MAIN/GOTOUR-TIME-TO-CODE-00.jpg" data-background-size="100%" data-background-position="50% 50%" -->
@@ -168,7 +168,7 @@ mode: set
 go tool cover -html=coverage.out main.go main_test.go
 ```
 
-![go-playground](img/PRIME_CHECKER/02.png)<!-- .element height="500px" -->
+![go-playground](img/TESTING/02.png)<!-- .element height="500px" -->
 
 ----
 
