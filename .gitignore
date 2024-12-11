@@ -2,3 +2,4 @@
 resources/go-tour.md
 .DS_Store
 devops/.terraform*
+.vscode
