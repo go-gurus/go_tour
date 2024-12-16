@@ -4,4 +4,4 @@ COPY resources /slides
 
 EXPOSE 8080
 
-CMD [ "/slides", "--theme", "theme/cc.css", "--port", "8080"]
+CMD [ "/slides", "--theme", "theme/gg.css", "--port", "8080"]

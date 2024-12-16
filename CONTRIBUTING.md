@@ -5,7 +5,7 @@
 * start container
 
 ```console
-$ docker run --rm -p 8000:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:latest /slides --theme theme/cc.css
+$ docker run --rm -p 8000:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:latest /slides --theme theme/gg.css
 ```
 
 * run periodic slides update

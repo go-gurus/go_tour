@@ -24,7 +24,7 @@ watch -n5 ./build.sh
 * start container
 
 ```console
-$ docker run --rm -p 8080:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:latest /slides --theme theme/cc.css
+$ docker run --rm -p 8080:1948 -v $(pwd)/resources:/slides webpronl/reveal-md:latest /slides --theme theme/gg.css
 ```
 
 * or build image and run a container
