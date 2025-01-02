@@ -202,8 +202,8 @@ In this task we want to inject a mock to be able to test function calls on the i
 * install gomock
 
 ```bash
-$ go install github.com/golang/mock/mockgen@v1.6.0
-$ go get github.com/golang/mock/gomock
+$ go install go.uber.org/mock/mockgen@v0.3.0
+$ go get go.uber.org/mock/gomock
 ```
 
 * generate mocks
@@ -262,6 +262,13 @@ var resolveLogger = func() logInterface {
 ```go
 // main_test.go
 package main
+
+import (
+	"go.uber.org/mock/gomock"
+	"grohm.io/interfaces/v2/mock_main"
+	"testing"
+)
+
 // ...
 func Test_doSomething(t *testing.T) {
 	ctrl := gomock.NewController(t)
