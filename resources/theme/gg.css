@@ -40,7 +40,7 @@ body > a {
  *********************************************/
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
     margin: 0 0 2.5rem 0;
-    color: #444;
+    color: #00caf0;
     font-family: "Roboto Slab", serif;
     font-weight: normal;
     line-height: 1.2;
@@ -359,3 +359,12 @@ section.intro.past {
 
 .master05.intro h1:before, .master05.intro h2:before, .master05.intro h3:before {
     color: #69B978; }
+
+
+/*********************************************
+ * CUSTOM
+ *********************************************/
+ .shadow-img {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border-radius: 4px;
+  }
