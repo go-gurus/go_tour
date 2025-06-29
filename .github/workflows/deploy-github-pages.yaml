@@ -37,7 +37,7 @@ jobs:
         run: docker run -u $(id -u):$(id -g) --rm -v ${{ github.workspace }}/dist:/dist -v ${{ github.workspace }}/resources:/slides webpronl/reveal-md:latest /slides/go-tour.md --static /dist --static-dirs=theme,img --theme theme/gg.css
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
 
