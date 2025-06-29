@@ -3,7 +3,7 @@ name: deploy to github pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["deploy-github-pages-1", "main"]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
