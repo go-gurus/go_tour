@@ -1,4 +1,4 @@
-name: Deploy Reveal site to Pages
+name: deploy to github pages
 
 on:
   # Runs on pushes targeting the default branch
