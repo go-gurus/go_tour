@@ -36,9 +36,10 @@ jobs:
       - name: Build Slides
         run: docker run -u $(id -u):$(id -g) --rm -v ${{ github.workspace }}/dist:/dist -v ${{ github.workspace }}/resources:/slides webpronl/reveal-md:latest /slides/go-tour.md --static /dist --static-dirs=theme,img --theme theme/gg.css
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      - name: Upload artifact manually
+        uses: actions/upload-artifact@v4
         with:
+          name: github-pages
           path: ./dist
 
   # Deployment job
