@@ -47,6 +47,7 @@
   * [github.com/go-gurus/go_tour](https://github.com/go-gurus/go_tour)
 * Slack
   * [go-gurus.slack.com](https://go-gurus.slack.com)
+  * [join our slack](https://join.slack.com/t/go-gurus/shared_invite/zt-28kzvjhkm-GLdgxIrrhO_aGjDOs3J~Zw)
 * github
   * [github.com/go-gurus](https://github.com/go-gurus)
 
