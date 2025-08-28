@@ -150,6 +150,7 @@ type, var
   * complex64, complex128
   * byte (alias for uint8)
   * rune (alias for int32)
+  * uintptr (special type for pointer values, low level programming)
 * string
 
 ----
