@@ -15,6 +15,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Build slides (generate resources/go-tour.md)
+        run: |
+          bash ./build.sh
+          echo "--- resources ---"
+          ls -la resources
+
       - name: Extract Docker metadata (tags & labels)
         id: metadata
         uses: docker/metadata-action@v5
