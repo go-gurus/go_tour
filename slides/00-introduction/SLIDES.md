@@ -344,8 +344,8 @@ func main() {
 
 ```go
 var tools [2]string
-a[0] = "screwdriver"
-a[1] = "hammer"
+tools[0] = "screwdriver"
+tools[1] = "hammer"
 
 primes := [6]int{2, 3, 5, 7, 11, 13}
 ```
