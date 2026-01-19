@@ -53,7 +53,9 @@
 
 ### The End
 
-* stay in contact [go-gurus.slack.com](https://go-gurus.slack.com)
+* stay in contact and join our slack
+    * [invitation](https://join.slack.com/t/go-gurus/shared_invite/zt-28kzvjhkm-GLdgxIrrhO_aGjDOs3J~Zw)
+    * [go-gurus.slack.com](https://go-gurus.slack.com),
 * participate [github.com/go-gurus](https://github.com/go-gurus)
 * see us soon on [youtube.com/@go-gurus](https://www.youtube.com/@go-gurus)
 
